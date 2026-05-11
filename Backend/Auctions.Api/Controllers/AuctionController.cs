@@ -3,25 +3,25 @@ using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TodoController : ControllerBase
+public class AuctionController : ControllerBase
 {
     private readonly AppDbContext _db;
 
-    public TodoController(AppDbContext db)
+    public AuctionController(AppDbContext db)
     {
         _db = db;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<TodoItem>> Get()
+    public async Task<IEnumerable<Auction>> Get()
     {
-        return await _db.TodoItems.ToListAsync();
+        return await _db.AuctionsList.ToListAsync();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(TodoItem item)
+    public async Task<IActionResult> Create(Auction item)
     {
-        _db.TodoItems.Add(item);
+        _db.AuctionsList.Add(item);
         await _db.SaveChangesAsync();
 
         return Ok(item);

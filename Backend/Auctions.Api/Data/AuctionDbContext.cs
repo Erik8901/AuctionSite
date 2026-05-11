@@ -7,5 +7,5 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    public DbSet<Auction> AuctionsList => Set<Auction>();
 }
