@@ -7,5 +7,12 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Auction> AuctionsList => Set<Auction>();
+    public DbSet<Auction> Auctions { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Auction>()
+            .Property(a => a.Price)
+            .HasPrecision(18, 2);
+    }
 }

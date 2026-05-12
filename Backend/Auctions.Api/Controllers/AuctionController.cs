@@ -15,13 +15,13 @@ public class AuctionController : ControllerBase
     [HttpGet]
     public async Task<IEnumerable<Auction>> Get()
     {
-        return await _db.AuctionsList.ToListAsync();
+        return await _db.Auctions.ToListAsync();
     }
 
     [HttpPost]
     public async Task<IActionResult> Create(Auction item)
     {
-        _db.AuctionsList.Add(item);
+        _db.Auctions.Add(item);
         await _db.SaveChangesAsync();
 
         return Ok(item);

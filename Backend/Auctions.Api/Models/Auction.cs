@@ -4,5 +4,5 @@ public class Auction
     public string Title { get; set; } = "";
     public bool IsDone { get; set; }
 
-    public int Price { get; set; }
+    public decimal Price { get; set; }
 }
