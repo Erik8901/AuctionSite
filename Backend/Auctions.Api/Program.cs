@@ -29,7 +29,7 @@ using (var scope = app.Services.CreateScope())
     foreach (var auction in auctions)
     {
         Console.WriteLine(
-            $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone}");
+            $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone} , Description: {auction.Description}, StartDate: {auction.StartDate}, EndDate: {auction.EndDate}, CreatedBy: {auction.CreatedBy}\"" );
     }
 }
 
