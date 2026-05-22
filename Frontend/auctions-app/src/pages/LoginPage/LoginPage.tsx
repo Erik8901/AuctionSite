@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { login } from '../../services/authService';
 import './LoginPage.css'
 
 function LoginPage() {
@@ -16,7 +16,21 @@ function LoginPage() {
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        try {
+            const data = await login(
+                email,
+                password
+            );
 
+            localStorage.setItem(
+                "token",
+                data.token
+            );
+
+            console.log("Logged in!");
+        } catch (error) {
+            console.log("Login failed");
+        }
     }
 
 

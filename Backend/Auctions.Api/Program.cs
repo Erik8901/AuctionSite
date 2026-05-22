@@ -1,4 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Auctions.Api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +23,29 @@ builder.Services.AddCors(options =>
               .AllowAnyOrigin());
 });
 
+builder.Services.AddSingleton<JwtService>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        var key = Encoding.UTF8.GetBytes(
+            builder.Configuration["Jwt:Key"]
+        );
+
+        options.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(key),
+
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -26,11 +54,13 @@ using (var scope = app.Services.CreateScope())
 
     var auctions = await context.Auctions.ToListAsync();
 
-    foreach (var auction in auctions)
-    {
-        Console.WriteLine(
-            $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone} , Description: {auction.Description}, StartDate: {auction.StartDate}, EndDate: {auction.EndDate}, CreatedBy: {auction.CreatedBy}\"" );
-    }
+    //foreach (var auction in auctions)
+    //{
+    //    Console.WriteLine(
+    //        $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone} , Description: {auction.Description}, StartDate: {auction.StartDate}, EndDate: {auction.EndDate}, CreatedBy: {auction.CreatedBy}\"" );
+    //}
+
+
 }
 
 app.UseCors("frontend");
@@ -40,6 +70,11 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
 
 app.MapControllers();
 
