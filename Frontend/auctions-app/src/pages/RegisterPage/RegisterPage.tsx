@@ -10,9 +10,6 @@ function RegisterPage() {
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(email)
-        console.log(password)
-        console.log(confirmedPassword)
 
         const data = await register(
             email,

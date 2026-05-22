@@ -1,22 +1,19 @@
-const API = "http://localhost:5153/api";
+const API = "http://localhost:5153/api/auction";
 
 export async function allAuctions() {
     const response = await fetch(
         `${API}`,
         {
             method: "GET",
-
             headers: {
                 "Content-Type": "application/json"
-            },
+            }
+        });
 
-            body: JSON.stringify({
+    if (!response.ok) {
+        throw new Error("Failed to fetch auctions");
+    }
 
-            })
-        }
-    );
-    console.log(response.json())
     return response.json();
 
 }
-

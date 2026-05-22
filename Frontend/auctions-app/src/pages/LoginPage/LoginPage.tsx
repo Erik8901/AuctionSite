@@ -10,13 +10,12 @@ function LoginPage() {
 
     const navigate = useNavigate();
 
-    // Check if user is already logged in
     useEffect(() => {
         const token = localStorage.getItem("token");
 
         if (token) {
             console.log(token)
-            navigate('/auctions'); // change to your home/dashboard route
+            navigate('/auctions');
         }
     }, [navigate]);
 
@@ -30,12 +29,10 @@ function LoginPage() {
         try {
             const data = await login(email, password);
 
-            // Save token
             localStorage.setItem("token", data.token);
 
             console.log("Logged in!");
 
-            // Redirect after login
             navigate('/');
 
         } catch (error) {
