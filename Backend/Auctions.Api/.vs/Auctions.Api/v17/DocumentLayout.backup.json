@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-22T06:10:26.042Z",
               "EditorCaption": ""
@@ -95,8 +95,7 @@
               "RelativeToolTip": "Services\\JwtService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-22T06:03:58.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T06:03:58.527Z"
             },
             {
               "$type": "Document",
@@ -142,7 +141,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAADwAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAADkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T12:17:38.693Z",
               "EditorCaption": ""
@@ -181,8 +180,7 @@
               "RelativeToolTip": "Models\\Auction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T12:20:03.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T12:20:03.324Z"
             },
             {
               "$type": "Document",
@@ -194,8 +192,7 @@
               "RelativeToolTip": "Data\\AuctionDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T12:19:57.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T12:19:57.603Z"
             }
           ]
         }

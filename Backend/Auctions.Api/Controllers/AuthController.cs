@@ -31,6 +31,11 @@ public class AuthController : ControllerBase
         };
 
         users.Add(user);
+        foreach (var person in users)
+        {
+            Console.WriteLine(
+                $"User: {person.Email}");
+        }
 
         var token = _jwtService.Generate(user);
 

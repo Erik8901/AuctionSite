@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/authService';
 import './LoginPage.css'
@@ -8,41 +8,57 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [loginMessage, setLoginMessage] = useState("");
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    // Check if user is already logged in
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            console.log(token)
+            navigate('/auctions'); // change to your home/dashboard route
+        }
+    }, [navigate]);
 
     function toRegister() {
-        navigate('/register')
+        navigate('/register');
     }
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            const data = await login(
-                email,
-                password
-            );
 
-            localStorage.setItem(
-                "token",
-                data.token
-            );
+        try {
+            const data = await login(email, password);
+
+            // Save token
+            localStorage.setItem("token", data.token);
 
             console.log("Logged in!");
+
+            // Redirect after login
+            navigate('/');
+
         } catch (error) {
             console.log("Login failed");
+            setLoginMessage("Invalid email or password");
         }
     }
 
-
     return (
         <div className="login-component">
-            <h1 className="h1-title">Auctions App</h1 >
+            <h1 className="h1-title">Auctions App</h1>
+
             <div className="error-msg">
-                {loginMessage && <span className="login-fail">{loginMessage}</span>}
+                {loginMessage && (
+                    <span className="login-fail">
+                        {loginMessage}
+                    </span>
+                )}
             </div>
 
             <form onSubmit={handleLogin}>
                 <div className="login-fields">
+
                     <label className="login-label">Email</label>
                     <input
                         className="login-inputs"
@@ -66,11 +82,15 @@ function LoginPage() {
                     <button className="login-btn" type="submit">
                         Login
                     </button>
+
                 </div>
             </form>
-            <h4 className="register" onClick={toRegister}>Register</h4>
-        </div >
+
+            <h4 className="register" onClick={toRegister}>
+                Register
+            </h4>
+        </div>
     )
 }
 
-export default LoginPage
+export default LoginPage;

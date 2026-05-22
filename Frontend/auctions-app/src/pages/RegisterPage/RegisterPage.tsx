@@ -24,7 +24,7 @@ function RegisterPage() {
             data.token
         );
 
-        console.log("Logged in!");
+        console.log("User Successfully Created!");
     }
 
 

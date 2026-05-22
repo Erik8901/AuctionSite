@@ -54,11 +54,11 @@ using (var scope = app.Services.CreateScope())
 
     var auctions = await context.Auctions.ToListAsync();
 
-    //foreach (var auction in auctions)
-    //{
-    //    Console.WriteLine(
-    //        $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone} , Description: {auction.Description}, StartDate: {auction.StartDate}, EndDate: {auction.EndDate}, CreatedBy: {auction.CreatedBy}\"" );
-    //}
+    foreach (var auction in auctions)
+    {
+        Console.WriteLine(
+            $"Id: {auction.Id}, Title: {auction.Title}, Price: {auction.Price}, Done: {auction.IsDone} , Description: {auction.Description}, StartDate: {auction.StartDate}, EndDate: {auction.EndDate}, CreatedBy: {auction.CreatedBy}\"");
+    }
 
 
 }
