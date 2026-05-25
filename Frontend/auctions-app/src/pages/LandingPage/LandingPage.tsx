@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { allAuctions } from '../../services/auctionsService';
+import Header from '../../components/Header/Header'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
+
+import './LandingPage.css'
 
 function LandingPage() {
     const navigate = useNavigate();
@@ -22,15 +26,18 @@ function LandingPage() {
         fetchAuctions();
     }, []);
 
-    function logout() {
-        localStorage.removeItem("token");
-        navigate("/login");
+
+
+    function toAddNewAuction() {
+        navigate("/add-new-auction");
     }
 
     return (
         <>
-            <h1>All Auctions</h1>
+            <Header />
+
             <div className='auctions-container'>
+                <h1>All Auctions</h1>
                 {auctions.map((auction) => (
                     <div className='auction' key={auction.id}>
                         <span>Price: {auction.price}</span>
@@ -42,7 +49,7 @@ function LandingPage() {
                     </div>
                 ))}
             </div>
-            <button onClick={logout}>Logout</button>
+            <button onClick={toAddNewAuction}>Create new Auction</button>
         </>
     );
 }
