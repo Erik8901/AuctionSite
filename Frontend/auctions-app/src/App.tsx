@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import AddAuctionPage from './pages/AddAuctionPage/AddAuctionPage'
+import AuctionPage from './pages/Auction/AuctionPage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/auctions" element={<LandingPage />} />
           <Route path="/add-new-auction" element={<AddAuctionPage />} />
+          <Route path="/auction" element={<AuctionPage />} />
         </Routes>
       </BrowserRouter>
     </>

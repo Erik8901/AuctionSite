@@ -26,12 +26,15 @@ function LandingPage() {
         fetchAuctions();
     }, []);
 
-
-
     function toAddNewAuction() {
         navigate("/add-new-auction");
     }
 
+    function toSelectedAuctionPage(auction: any) {
+        navigate("/auction", {
+            state: { auction }
+        });
+    }
     return (
         <>
             <Header />
@@ -39,13 +42,15 @@ function LandingPage() {
             <div className='auctions-container'>
                 <h1>All Auctions</h1>
                 {auctions.map((auction) => (
-                    <div className='auction' key={auction.id}>
+                    <div className='auction' key={auction.id} onClick={() => toSelectedAuctionPage(auction)}>
+
                         <span>Price: {auction.price}</span>
                         <span>created by: {auction.createdBy}</span>
                         <h3>{auction.title}</h3>
                         <p>info: {auction.description}</p>
                         <span>Start Date: {auction.startDate}</span>
                         <span>End Date: {auction.endDate}</span>
+
                     </div>
                 ))}
             </div>

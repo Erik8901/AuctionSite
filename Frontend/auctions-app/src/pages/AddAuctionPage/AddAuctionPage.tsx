@@ -13,10 +13,12 @@ function AddAuctionPage() {
     const [price, setPrice] = useState("");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const [createdBy, setCreatedBy] = useState("");
 
-
+    const navigate = useNavigate();
 
     useEffect(() => {
+
         const token = localStorage.getItem("token");
 
         function parseJwt(token: any) {
@@ -40,11 +42,43 @@ function AddAuctionPage() {
             user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"];
 
         console.log("Email:", email);
+        setCreatedBy(email);
     }, []);
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        const auction = {
+            title,
+            description,
+            price: Number(price),
+            startDate,
+            endDate,
+            createdBy
+        };
+
+        try {
+            const response = await fetch("http://localhost:5153/api/auction", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(auction),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to create auction");
+            }
+
+            const data = await response.json();
+
+            console.log("Auction created:", data);
+
+
+            // navigate("/");
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
@@ -54,7 +88,7 @@ function AddAuctionPage() {
                 <h1 className="h1-title">Add New Auction</h1>
 
 
-                <form onSubmit={handleLogin}>
+                <form onSubmit={addNewAuction}>
                     <div className="login-fields">
 
                         <label className="login-label">Title</label>

@@ -1,3 +1,5 @@
+using Auctions.Api.Models;
+
 public class Auction
 {
     public int Id { get; set; }
@@ -10,4 +12,6 @@ public class Auction
 
     public decimal Price { get; set; }
     public bool IsDone { get; set; }
+
+    public List<Bid> Bids { get; set; } = new();
 }
