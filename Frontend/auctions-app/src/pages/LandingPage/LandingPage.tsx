@@ -37,23 +37,31 @@ function LandingPage() {
 	}
 	return (
 		<>
-			<h1>All Auctions</h1>
+			<input
+				className="search"
+				type="text"
+				placeholder="Search for an Auction..."
+			/>
 
 			<div className="auctions-container">
-				{auctions.map((auction) => (
-					<div
-						className="auction"
-						key={auction.id}
-						onClick={() => toSelectedAuctionPage(auction)}
-					>
-						<span>{auction.title}</span>
-						<span>Price: {auction.price}</span>
-						<span>created by: {auction.createdBy}</span>
-						<span>info: {auction.description}</span>
-						<span>Start Date: {auction.startDate}</span>
-						<span>End Date: {auction.endDate}</span>
-					</div>
-				))}
+				<h1>Recent Auctions</h1>
+				<div className="auctions-list">
+					{auctions.map((auction) => (
+						<div
+							className="auction"
+							key={auction.id}
+							onClick={() => toSelectedAuctionPage(auction)}
+						>
+							<span>{auction.title}</span>
+							<span>Price: {auction.price}</span>
+							<span>created by: {auction.createdBy}</span>
+							<span>info: {auction.description}</span>
+							<img src="https://images.blocketcdn.se/dynamic/1280w/item/23497407/063f54cd-8b3c-4a5e-ba1e-c50b0bef784f" />
+							<span>Start Date: {auction.startDate}</span>
+							<span>End Date: {auction.endDate}</span>
+						</div>
+					))}
+				</div>
 			</div>
 			<button className="btn-create-new-auction" onClick={toAddNewAuction}>
 				Create new Auction
