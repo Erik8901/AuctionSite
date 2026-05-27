@@ -3,7 +3,7 @@ h1 {
 }
 
 .auctions-container {
-	background: darkcyan;
+	background: #ffc94d;
 	margin: 0 7rem;
 	padding: 1rem;
 	border-radius: 10px;
@@ -12,7 +12,7 @@ h1 {
 }
 
 .auction {
-	background: lightblue;
+	background: #59b292;
 	margin: 1rem;
 	border-radius: 10px;
 	padding: 1rem;
@@ -28,7 +28,7 @@ h1 {
 	font-weight: 700;
 	margin: 3rem 7rem;
 	border: none;
-	background: lightblue;
+	background: #59b292;
 	color: #fff;
 	padding: 1rem;
 	cursor: pointer;

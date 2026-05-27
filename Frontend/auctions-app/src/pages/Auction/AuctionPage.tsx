@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
-import Header from "../../components/Header/Header";
+
+import "./AuctionPage.css";
+
 function AuctionPage() {
 	const location = useLocation();
 
@@ -22,13 +24,15 @@ function AuctionPage() {
 	}
 
 	return (
-		<div className="selected-auction">
-			<span>{auction.title}</span>
-			<span>{auction.description}</span>
-			<span>{auction.price} €</span>
-			<span>{auction.startDate}</span>
-			<span>{auction.endDate}</span>
-			<span>{auction.createdBy}</span>
+		<div className="selected-auction-container">
+			<div className="selected-auction-info">
+				<span>{auction.title}</span>
+				<span>{auction.description}</span>
+				<span>{auction.price} €</span>
+				<span>{auction.startDate}</span>
+				<span>{auction.endDate}</span>
+				<span>{auction.createdBy}</span>
+			</div>
 			<button className="btn-add-bid" onClick={AddBid}>
 				Add Bid
 			</button>
