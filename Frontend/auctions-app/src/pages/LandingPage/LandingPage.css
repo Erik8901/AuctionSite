@@ -1,4 +1,36 @@
+h1 {
+	padding-left: 7rem;
+}
+
+.auctions-container {
+	background: darkcyan;
+	margin: 0 7rem;
+	padding: 1rem;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
 .auction {
-    background: lightblue;
-    margin: 1rem;
+	background: lightblue;
+	margin: 1rem;
+	border-radius: 10px;
+	padding: 1rem;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.btn-create-new-auction {
+	font-weight: 700;
+	margin: 3rem 7rem;
+	border: none;
+	background: lightblue;
+	color: #fff;
+	padding: 1rem;
+	cursor: pointer;
+	border-radius: 10px;
 }

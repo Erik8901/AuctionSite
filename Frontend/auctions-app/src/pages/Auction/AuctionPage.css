@@ -1,0 +1,8 @@
+.selected-auction {
+	background: lightblue;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	padding: 2rem 7rem;
+}

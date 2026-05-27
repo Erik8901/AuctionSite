@@ -1,9 +1,24 @@
 .header {
-    background: lightblue;
-    height: 4rem;
-    display: flex;
-    position: sticky;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 7rem 0 7rem;
+	background: lightblue;
+	height: 4rem;
+	display: flex;
+	position: sticky;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 7rem 0 7rem;
+}
+
+h2 {
+	color: #fff;
+}
+.btn-logout {
+	background: none;
+	border: none;
+	color: #fff;
+	font-size: 1.3rem;
+	cursor: pointer;
+}
+
+.btn-logout:hover {
+	color: #bebebe;
 }

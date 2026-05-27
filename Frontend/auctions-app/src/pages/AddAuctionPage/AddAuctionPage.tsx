@@ -1,136 +1,134 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import Header from '../../components/Header/Header'
 
-import './datepicker.css'
-
-
+import "./AddAuctionpage.css";
 
 function AddAuctionPage() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-    const [createdBy, setCreatedBy] = useState("");
+	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [price, setPrice] = useState("");
+	const [startDate, setStartDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(new Date());
+	const [createdBy, setCreatedBy] = useState("");
 
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
-    useEffect(() => {
+	useEffect(() => {
+		const token = localStorage.getItem("token");
 
-        const token = localStorage.getItem("token");
+		function parseJwt(token: any) {
+			if (!token) return null;
 
-        function parseJwt(token: any) {
-            if (!token) return null;
+			const base64Url = token.split(".")[1];
+			const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
 
-            const base64Url = token.split(".")[1];
-            const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+			const jsonPayload = decodeURIComponent(
+				atob(base64)
+					.split("")
+					.map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+					.join(""),
+			);
 
-            const jsonPayload = decodeURIComponent(
-                atob(base64)
-                    .split("")
-                    .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-                    .join("")
-            );
+			return JSON.parse(jsonPayload);
+		}
 
-            return JSON.parse(jsonPayload);
-        }
+		const user = parseJwt(token);
+		const email =
+			user[
+				"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+			];
 
-        const user = parseJwt(token);
-        const email =
-            user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"];
+		console.log("Email:", email);
+		setCreatedBy(email);
+	}, []);
 
-        console.log("Email:", email);
-        setCreatedBy(email);
-    }, []);
+	const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 
-    const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+		const auction = {
+			title,
+			description,
+			price: Number(price),
+			startDate,
+			endDate,
+			createdBy,
+		};
 
-        const auction = {
-            title,
-            description,
-            price: Number(price),
-            startDate,
-            endDate,
-            createdBy
-        };
+		try {
+			const response = await fetch("http://localhost:5153/api/auction", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(auction),
+			});
 
-        try {
-            const response = await fetch("http://localhost:5153/api/auction", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(auction),
-            });
+			if (!response.ok) {
+				throw new Error("Failed to create auction");
+			}
 
-            if (!response.ok) {
-                throw new Error("Failed to create auction");
-            }
+			const data = await response.json();
 
-            const data = await response.json();
+			console.log("Auction created:", data);
 
-            console.log("Auction created:", data);
+			// navigate("/");
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
+	return (
+		<>
+			<div className="add-auction-container">
+				<form onSubmit={addNewAuction}>
+					<h1 className="h1-title">Add New Auction</h1>
+					<div className="login-fields">
+						<label className="login-label">Title</label>
+						<input
+							className="login-inputs"
+							type="text"
+							autoComplete="title"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+							placeholder="title"
+						/>
 
-            // navigate("/");
-        } catch (error) {
-            console.error(error);
-        }
-    }
+						<label className="login-label">Description</label>
+						<input
+							className="login-inputs"
+							type="text"
+							autoComplete="current-password"
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
+							placeholder="description"
+						/>
+						<label className="login-label">Price</label>
+						<input
+							className="login-inputs"
+							type="number"
+							autoComplete="current-password"
+							value={price}
+							onChange={(e) => setPrice(e.target.value)}
+							placeholder="price in €"
+						/>
+						<DatePicker
+							selected={startDate}
+							onChange={(date: any) => setStartDate(date)}
+						/>
+						<DatePicker
+							selected={endDate}
+							onChange={(date: any) => setEndDate(date)}
+						/>
 
-    return (
-        <>
-            <Header />
-            <div className="add-auction-container">
-                <h1 className="h1-title">Add New Auction</h1>
-
-
-                <form onSubmit={addNewAuction}>
-                    <div className="login-fields">
-
-                        <label className="login-label">Title</label>
-                        <input
-                            className="login-inputs"
-                            type="text"
-                            autoComplete="title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            placeholder="title"
-                        />
-
-                        <label className="login-label">Description</label>
-                        <input
-                            className="login-inputs"
-                            type="text"
-                            autoComplete="current-password"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="description"
-                        />
-                        <label className="login-label">Price</label>
-                        <input
-                            className="login-inputs"
-                            type="number"
-                            autoComplete="current-password"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="price in €"
-                        />
-                        <DatePicker selected={startDate} onChange={(date: any) => setStartDate(date)} />
-                        <DatePicker selected={endDate} onChange={(date: any) => setEndDate(date)} />
-
-                        <button className="login-btn" type="submit">
-                            Add new Auction
-                        </button>
-
-                    </div>
-                </form>
-            </div>
-        </>
-    )
+						<button className="btn-add-new-auction" type="submit">
+							Add new Auction
+						</button>
+					</div>
+				</form>
+			</div>
+		</>
+	);
 }
 
 export default AddAuctionPage;
