@@ -7,6 +7,7 @@ import "./LandingPage.css";
 type Auction = {
 	id: number;
 	title: string;
+	isDone: Boolean;
 	price: number;
 	createdBy: string;
 	description: string;
@@ -27,11 +28,24 @@ function LandingPage() {
 	}, [auctions, search]);
 
 	useEffect(() => {
+
 		async function fetchAuctions() {
 			try {
 				const data = await allAuctions();
-				console.log(data);
-				setAuctions(data);
+
+				// const fileredByDone = data.filter((auction: Auction) => auction.isDone == false)
+				// const isActive = new Date(fileredByDone.endDate) > new Date();
+				// console.log(isActive)
+				// if (isActive == true) {
+				// 	auction.isDone == true;
+				// }
+				const activeAuctions = data.filter(
+					(auction: Auction) =>
+						new Date(auction.endDate) > new Date()
+				);
+
+				console.log(activeAuctions);
+				setAuctions(activeAuctions);
 			} catch (error) {
 				console.log("Failed to load auctions");
 				console.error(error);

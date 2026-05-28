@@ -36,7 +36,7 @@ function AddAuctionPage() {
 		const user = parseJwt(token);
 		const email =
 			user[
-				"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+			"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
 			];
 
 		console.log("Email:", email);
