@@ -1,15 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { allAuctions } from "../../services/auctionsService";
-import Header from "../../components/Header/Header";
-import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
 import "./LandingPage.css";
+
+type Auction = {
+	id: number;
+	title: string;
+	price: number;
+	createdBy: string;
+	description: string;
+	startDate: string;
+	endDate: string;
+};
 
 function LandingPage() {
 	const navigate = useNavigate();
 
-	const [auctions, setAuctions] = useState<any[]>([]);
+	const [auctions, setAuctions] = useState<Auction[]>([]);
+	const [search, setSearch] = useState("");
+
+	const filteredAuctions = useMemo(() => {
+		return auctions.filter((auction) =>
+			auction.title.toLowerCase().includes(search.toLowerCase()),
+		);
+	}, [auctions, search]);
 
 	useEffect(() => {
 		async function fetchAuctions() {
@@ -30,23 +45,31 @@ function LandingPage() {
 		navigate("/add-new-auction");
 	}
 
-	function toSelectedAuctionPage(auction: any) {
+	function toSelectedAuctionPage(auction: Auction) {
 		navigate("/auction", {
 			state: { auction },
 		});
 	}
+
+	function searchAuctions(e: React.ChangeEvent<HTMLInputElement>) {
+		setSearch(e.target.value);
+	}
+
 	return (
 		<>
 			<input
 				className="search"
 				type="text"
 				placeholder="Search for an Auction..."
+				value={search}
+				onChange={searchAuctions}
 			/>
 
 			<div className="auctions-container">
 				<h1>Recent Auctions</h1>
+
 				<div className="auctions-list">
-					{auctions.map((auction) => (
+					{filteredAuctions.map((auction) => (
 						<div
 							className="auction"
 							key={auction.id}
@@ -56,13 +79,20 @@ function LandingPage() {
 							<span>Price: {auction.price}</span>
 							<span>created by: {auction.createdBy}</span>
 							<span>info: {auction.description}</span>
-							<img src="https://images.blocketcdn.se/dynamic/1280w/item/23497407/063f54cd-8b3c-4a5e-ba1e-c50b0bef784f" />
+
+							<img
+								src="https://images.blocketcdn.se/dynamic/1280w/item/23497407/063f54cd-8b3c-4a5e-ba1e-c50b0bef784f"
+								alt={auction.title}
+							/>
+
 							<span>Start Date: {auction.startDate}</span>
+
 							<span>End Date: {auction.endDate}</span>
 						</div>
 					))}
 				</div>
 			</div>
+
 			<button className="btn-create-new-auction" onClick={toAddNewAuction}>
 				Create new Auction
 			</button>
