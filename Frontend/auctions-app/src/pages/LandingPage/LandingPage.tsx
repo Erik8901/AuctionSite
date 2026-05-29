@@ -33,19 +33,12 @@ function LandingPage() {
 			try {
 				const data = await allAuctions();
 
-				// const fileredByDone = data.filter((auction: Auction) => auction.isDone == false)
-				// const isActive = new Date(fileredByDone.endDate) > new Date();
-				// console.log(isActive)
-				// if (isActive == true) {
-				// 	auction.isDone == true;
-				// }
 				const now = new Date();
 
 				const activeAuctions = data.filter(
 					(auction: Auction) => new Date(auction.endDate) > now
 				);
 
-				console.log(activeAuctions);
 				setAuctions(activeAuctions);
 			} catch (error) {
 				console.log("Failed to load auctions");

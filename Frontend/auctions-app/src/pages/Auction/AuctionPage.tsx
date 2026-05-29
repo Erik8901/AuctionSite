@@ -51,7 +51,7 @@ function AuctionPage() {
 
 	useEffect(() => {
 		if (!auction || !email) return;
-
+		console.log(email)
 		setUserAuction(email === auction.createdBy);
 	}, [email, auction]);
 
@@ -84,9 +84,11 @@ function AuctionPage() {
 
 		if (!res.ok) return;
 
+		const savedBid = await res.json();
+
 		setAuction((prev: any) => ({
 			...prev,
-			bids: [...prev.bids, newBid],
+			bids: [...prev.bids, savedBid],
 		}));
 	}
 
