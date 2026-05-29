@@ -39,9 +39,10 @@ function LandingPage() {
 				// if (isActive == true) {
 				// 	auction.isDone == true;
 				// }
+				const now = new Date();
+
 				const activeAuctions = data.filter(
-					(auction: Auction) =>
-						new Date(auction.endDate) > new Date()
+					(auction: Auction) => new Date(auction.endDate) > now
 				);
 
 				console.log(activeAuctions);
