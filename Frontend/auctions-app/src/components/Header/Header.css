@@ -12,14 +12,31 @@
 h2 {
 	color: #fff;
 }
+
 .btn-logout {
 	background: none;
 	border: none;
 	color: #fff;
 	font-size: 1.3rem;
 	cursor: pointer;
+	font-weight: 700;
 }
 
 .btn-logout:hover {
 	color: #bebebe;
+}
+
+.user-logins {
+	color: #ffc94d;
+}
+
+.logged-in {
+	color: #fff;
+}
+
+
+.user-info-logout-container {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
 }

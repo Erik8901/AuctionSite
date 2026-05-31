@@ -20,8 +20,6 @@ function AuctionPage() {
 	const [openNewBidForm, setOpenNewBidForm] = useState(false);
 	const [addBid, setAddBid] = useState<number>(0);
 
-	// const auction = location.state?.auction;
-	console.log(auction)
 	if (!auction) return <div>No auction found</div>;
 
 	const token = localStorage.getItem("token");
@@ -51,7 +49,7 @@ function AuctionPage() {
 
 	useEffect(() => {
 		if (!auction || !email) return;
-		console.log(email)
+
 		setUserAuction(email === auction.createdBy);
 	}, [email, auction]);
 

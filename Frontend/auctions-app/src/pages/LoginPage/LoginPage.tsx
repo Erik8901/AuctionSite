@@ -31,14 +31,17 @@ function LoginPage() {
 
             localStorage.setItem("token", data.token);
 
-            console.log("Logged in!");
-
+            alert("User Successfully Logged in!");
             navigate('/');
 
         } catch (error) {
             console.log("Login failed");
             setLoginMessage("Invalid email or password");
         }
+
+
+
+
     }
 
     return (
@@ -79,13 +82,14 @@ function LoginPage() {
                     <button className="login-btn" type="submit">
                         Login
                     </button>
-
+                    <h4 className="register" onClick={toRegister}>
+                        Register
+                    </h4>
                 </div>
+
             </form>
 
-            <h4 className="register" onClick={toRegister}>
-                Register
-            </h4>
+
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .login-btn {
-    background: lightblue;
+    background: #59b292;
     color: #fff;
     border: none;
     height: 40px;
@@ -13,11 +13,13 @@
 }
 
 .h1-title {
+    color: #59b292;
     font-size: 40px;
 }
 
 .login-label {
     font-size: 20px;
+    color: #59b292;
 }
 
 .login-inputs {
@@ -47,4 +49,13 @@
 
 .login-fail {
     color: #ed1c24;
+}
+
+.register {
+    color: #59b292;
+    cursor: pointer;
+}
+
+.register:hover {
+    color: #e5e4e2;
 }
