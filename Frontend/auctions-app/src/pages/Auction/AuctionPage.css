@@ -1,25 +1,37 @@
-.selected-auction-container {
+.selected-auction {
 	background: #ffc94d;
-	color: #fff;
 	display: flex;
 	flex-direction: column;
 	margin: 1rem 6rem;
 	padding-bottom: 3rem;
 	border-radius: 10px;
 	width: fit-content;
+	color: #fff;
 }
 
-.selected-auction-info {
+.selected-auction-container {
+	background: #ffc94d;
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	margin: 1rem 6rem;
+	padding-bottom: 3rem;
+	border-radius: 10px;
+	width: fit-content;
+}
+
+.selected-auction-info,
+.selected-auction-bidder-info {
 	background: #59b292;
-	padding: 2rem 7rem;
+	padding: 2rem 2rem;
 	color: #fff;
 	border-radius: 10px;
-	margin: 3rem 7rem;
+	margin: 2rem 2rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 	width: 20vw;
-	padding: 3rem;
+
 }
 
 .title {
@@ -44,12 +56,20 @@
 	flex-direction: column;
 }
 
+
 .bids-list {
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
-	gap: 3px;
+	gap: 10px;
 }
+
+.bidders-info {
+	display: flex;
+	flex-direction: column;
+
+}
+
 
 .btn-add-bid {
 	background: #59b292;

@@ -56,6 +56,8 @@ function AddAuctionPage() {
 			createdBy,
 		};
 
+		console.log(auction.price)
+
 		try {
 			const response = await fetch("http://localhost:5153/api/auction", {
 				method: "POST",

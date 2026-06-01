@@ -65,12 +65,22 @@ function AuctionPage() {
 
 	async function AddBid(e: React.FormEvent) {
 		e.preventDefault();
+		console.log("bid " + addBid)
+		console.log("highestBid " + highestBid?.price)
+
+		if (addBid <= (highestBid?.price ?? 0)) {
+			alert("Your bid some must be higher then the highest in order to bid")
+			return;
+		}
+
 
 		const newBid = {
 			price: addBid,
 			bidder: email,
 			createdAt: new Date().toISOString(),
 		};
+
+
 
 		const res = await fetch(`http://localhost:5153/api/auction/${auction.id}/bid`, {
 			method: "POST",
@@ -91,33 +101,43 @@ function AuctionPage() {
 	}
 
 	return (
-		<div className="selected-auction-container">
-			<div className="selected-auction-info">
-				<span className="title">{auction.title}</span>
-				<span className="price">Price: {auction.price} €</span>
-				<span className="info">About: {auction.description}</span>
-				<span className="date">Start: {auction.startDate.split('T')[0]}</span>
-				<span className="date" >End: {auction.endDate.split('T')[0]}</span>
-				<span className="creator">Created by: {auction.createdBy}</span>
-				<div className="bids">
-					<div className="highest-bidder">
-						{highestBid && (
-							<div className="highest-bidder-container">
-								<span>Highest Bidder: {highestBid.bidder}</span>
-								<span>Highest Bid: {highestBid.price}</span>
-							</div>
-						)}
+		<div className="selected-auction">
+			<div className="selected-auction-container">
+				<div className="selected-auction-info">
+					<span className="title">{auction.title}</span>
+					<span className="price">Price: {auction.price} €</span>
+					<span className="info">About: {auction.description}</span>
+					<span className="date">Start: {auction.startDate.split('T')[0]}</span>
+					<span className="date" >End: {auction.endDate.split('T')[0]}</span>
+					<span className="creator">Created by: {auction.createdBy}</span>
+					<div className="bids">
+						<div className="highest-bidder">
+							{highestBid && (
+								<div className="highest-bidder-container">
+									<span>Highest Bidder: {highestBid.bidder}</span>
+									<span>Highest Bid: {highestBid.price}</span>
+								</div>
+							)}
+						</div>
+
 					</div>
+
+				</div>
+
+				<div className="selected-auction-bidder-info">
 					<div className="bids-list">
 						<span>Bidders:</span>
 						{auction.bids?.map((bid: any) => (
-							<div key={bid.id}>
+							<div key={bid.id} className="bidders-info">
 								<span>Bidder: {bid.bidder}</span>
 								<span>Price: {bid.price}</span>
 							</div>
 						))}
 					</div>
 				</div>
+
+
+
 			</div>
 			{
 				!userAuction && <button className="btn-add-bid" onClick={() => setOpenNewBidForm(!openNewBidForm)}>
@@ -139,8 +159,6 @@ function AuctionPage() {
 								onChange={(e) => setAddBid(Number(e.target.value))}
 								placeholder="100"
 							/>
-
-
 							<button className="btn-add-bid" type="submit">
 								Add Bid
 							</button>
