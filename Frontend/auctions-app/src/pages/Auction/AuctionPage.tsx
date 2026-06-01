@@ -93,16 +93,16 @@ function AuctionPage() {
 	return (
 		<div className="selected-auction-container">
 			<div className="selected-auction-info">
-				<span>{auction.title}</span>
-				<span>{auction.description}</span>
-				<span>{auction.price} €</span>
-				<span>{auction.startDate}</span>
-				<span>{auction.endDate}</span>
-				<span>{auction.createdBy}</span>
+				<span className="title">{auction.title}</span>
+				<span className="price">Price: {auction.price} €</span>
+				<span className="info">About: {auction.description}</span>
+				<span className="date">Start: {auction.startDate.split('T')[0]}</span>
+				<span className="date" >End: {auction.endDate.split('T')[0]}</span>
+				<span className="creator">Created by: {auction.createdBy}</span>
 				<div className="bids">
 					<div className="highest-bidder">
 						{highestBid && (
-							<div>
+							<div className="highest-bidder-container">
 								<span>Highest Bidder: {highestBid.bidder}</span>
 								<span>Highest Bid: {highestBid.price}</span>
 							</div>

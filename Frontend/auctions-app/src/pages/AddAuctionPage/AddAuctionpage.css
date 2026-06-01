@@ -17,7 +17,7 @@
 }
 
 .btn-add-new-auction {
-	background: lightseagreen;
+	background: #59b292;
 	color: #fff;
 	border: none;
 	height: 40px;
@@ -27,4 +27,32 @@
 	border-radius: 10px;
 }
 
+.date-pick:focus {
+	outline: none;
+}
 
+.select-date {
+	display: flex;
+	flex-direction: column;
+
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.pick-date {
+	color: #59b292;
+}
+
+#root>div.add-auction-container>form>div>div>div:nth-child(4),
+#root>div.add-auction-container>form>div>div>div:nth-child(4)>div,
+#root>div.add-auction-container>form>div>div>div:nth-child(2)>div,
+#root>div.add-auction-container>form>div>div>div:nth-child(2) {
+	all: unset;
+}
+
+#root>div.add-auction-container>form>div>div>div:nth-child(4):focus,
+#root>div.add-auction-container>form>div>div>div:nth-child(4)>div:focus,
+#root>div.add-auction-container>form>div>div>div:nth-child(2)>div:focus,
+#root>div.add-auction-container>form>div>div>div:nth-child(2):focus {
+	all: unset;
+}

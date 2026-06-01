@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
 import "./AddAuctionpage.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddAuctionPage() {
 	const [title, setTitle] = useState("");
@@ -70,7 +71,7 @@ function AddAuctionPage() {
 
 			const data = await response.json();
 
-			console.log("Auction created:", data);
+			alert("Auction created");
 
 			// navigate("/");
 		} catch (error) {
@@ -112,14 +113,20 @@ function AddAuctionPage() {
 							onChange={(e) => setPrice(e.target.value)}
 							placeholder="price in €"
 						/>
-						<DatePicker
-							selected={startDate}
-							onChange={(date: any) => setStartDate(date)}
-						/>
-						<DatePicker
-							selected={endDate}
-							onChange={(date: any) => setEndDate(date)}
-						/>
+						<div className="select-date">
+							<span className="pick-date">Start Date: </span>
+							<DatePicker
+								className="date-pick"
+								selected={startDate}
+								onChange={(date: any) => setStartDate(date)}
+							/>
+							<span className="pick-date">End Date: </span>
+							<DatePicker
+								className="date-pick"
+								selected={endDate}
+								onChange={(date: any) => setEndDate(date)}
+							/>
+						</div>
 
 						<button className="btn-add-new-auction" type="submit">
 							Add new Auction
