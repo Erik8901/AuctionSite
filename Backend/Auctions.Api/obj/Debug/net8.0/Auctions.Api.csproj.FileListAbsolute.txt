@@ -563,3 +563,4 @@ C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\refint\
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\Auctions.Api.pdb
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\Auctions.Api.genruntimeconfig.cache
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\ref\Auctions.Api.dll
+C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\swae.build.ex.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qb1UKw/oHx0=",
+  "dgSpecHash": "Kez4ZiScLio=",
   "success": true,
-  "projectFilePath": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
+  "projectFilePath": "C:\\Users\\erikj\\Desktop\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erikj\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\erikj\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

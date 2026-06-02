@@ -28,7 +28,6 @@ function LandingPage() {
 	}, [auctions, search]);
 
 	useEffect(() => {
-
 		async function fetchAuctions() {
 			try {
 				const data = await allAuctions();
@@ -36,7 +35,7 @@ function LandingPage() {
 				const now = new Date();
 
 				const activeAuctions = data.filter(
-					(auction: Auction) => new Date(auction.endDate) > now
+					(auction: Auction) => new Date(auction.endDate) > now,
 				);
 
 				setAuctions(activeAuctions);
@@ -83,14 +82,9 @@ function LandingPage() {
 							key={auction.id}
 							onClick={() => toSelectedAuctionPage(auction)}
 						>
-							{/* <img
-								src="https://images.blocketcdn.se/dynamic/1280w/item/23497407/063f54cd-8b3c-4a5e-ba1e-c50b0bef784f"
-								alt={auction.title}
-							/> */}
 							<span className="auction-title">{auction.title}</span>
 							<span className="auction-price">{auction.price} €</span>
 							<span className="auction-info">{auction.description}</span>
-
 						</div>
 					))}
 				</div>

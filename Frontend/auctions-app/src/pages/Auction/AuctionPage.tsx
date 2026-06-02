@@ -1,8 +1,7 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import "./AuctionPage.css";
-import { add } from "date-fns";
 
 type Bid = {
 	id: number;
@@ -42,10 +41,7 @@ function AuctionPage() {
 
 	const user = parseJwt(token);
 	const email =
-		user[
-		"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
-		];
-
+		user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"];
 
 	useEffect(() => {
 		if (!auction || !email) return;
@@ -53,26 +49,22 @@ function AuctionPage() {
 		setUserAuction(email === auction.createdBy);
 	}, [email, auction]);
 
-
-
 	const highestBid: Bid | null =
 		auction.bids.length > 0
 			? auction.bids.reduce((max: Bid, bid: Bid) =>
-				bid.price > max.price ? bid : max
-			)
+					bid.price > max.price ? bid : max,
+				)
 			: null;
-
 
 	async function AddBid(e: React.FormEvent) {
 		e.preventDefault();
-		console.log("bid " + addBid)
-		console.log("highestBid " + highestBid?.price)
+		console.log("bid " + addBid);
+		console.log("highestBid " + highestBid?.price);
 
 		if (addBid <= (highestBid?.price ?? 0)) {
-			alert("Your bid some must be higher then the highest in order to bid")
+			alert("Your bid some must be higher then the highest in order to bid");
 			return;
 		}
-
 
 		const newBid = {
 			price: addBid,
@@ -80,15 +72,16 @@ function AuctionPage() {
 			createdAt: new Date().toISOString(),
 		};
 
-
-
-		const res = await fetch(`http://localhost:5153/api/auction/${auction.id}/bid`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
+		const res = await fetch(
+			`http://localhost:5153/api/auction/${auction.id}/bid`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newBid),
 			},
-			body: JSON.stringify(newBid),
-		});
+		);
 
 		if (!res.ok) return;
 
@@ -107,8 +100,8 @@ function AuctionPage() {
 					<span className="title">{auction.title}</span>
 					<span className="price">Price: {auction.price} €</span>
 					<span className="info">About: {auction.description}</span>
-					<span className="date">Start: {auction.startDate.split('T')[0]}</span>
-					<span className="date" >End: {auction.endDate.split('T')[0]}</span>
+					<span className="date">Start: {auction.startDate.split("T")[0]}</span>
+					<span className="date">End: {auction.endDate.split("T")[0]}</span>
 					<span className="creator">Created by: {auction.createdBy}</span>
 					<div className="bids">
 						<div className="highest-bidder">
@@ -119,9 +112,7 @@ function AuctionPage() {
 								</div>
 							)}
 						</div>
-
 					</div>
-
 				</div>
 
 				<div className="selected-auction-bidder-info">
@@ -135,18 +126,16 @@ function AuctionPage() {
 						))}
 					</div>
 				</div>
-
-
-
 			</div>
-			{
-				!userAuction && <button className="btn-add-bid" onClick={() => setOpenNewBidForm(!openNewBidForm)}>
+			{!userAuction && (
+				<button
+					className="btn-add-bid"
+					onClick={() => setOpenNewBidForm(!openNewBidForm)}
+				>
 					Add New Bid
 				</button>
-			}
-			{
-				openNewBidForm &&
-
+			)}
+			{openNewBidForm && (
 				<div className="new-bid-form">
 					<form onSubmit={AddBid}>
 						<div className="bid-fields">
@@ -165,7 +154,7 @@ function AuctionPage() {
 						</div>
 					</form>
 				</div>
-			}
+			)}
 		</div>
 	);
 }
