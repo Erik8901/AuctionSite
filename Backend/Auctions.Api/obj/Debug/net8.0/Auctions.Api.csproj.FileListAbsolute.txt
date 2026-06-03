@@ -420,7 +420,6 @@ C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\Aucti
 C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\ref\Auctions.Api.dll
 C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\bin\Debug\net8.0\BCrypt-Net-Next.dll
 C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\bin\Debug\net8.0\wwwroot\index.html
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\bin\Debug\net8.0\appsettings.json
@@ -564,3 +563,4 @@ C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\Auction
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\Auctions.Api.genruntimeconfig.cache
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\ref\Auctions.Api.dll
 C:\Users\erikj\Desktop\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\swae.build.ex.cache
+C:\Users\erikj\Documents\AuctionSite\Backend\Auctions.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

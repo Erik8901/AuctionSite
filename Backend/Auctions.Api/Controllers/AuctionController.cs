@@ -1,3 +1,4 @@
+using Auctions.Api.Dtos;
 using Auctions.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -44,12 +45,38 @@ public class AuctionController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Auction item)
+    public async Task<IActionResult> CreateAuction([FromForm] CreateAuctionDto dto)
     {
-        _db.Auctions.Add(item);
+        string imgUrl = "";
+
+        if (dto.Image != null)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(dto.Image.FileName);
+            var path = Path.Combine("wwwroot/images", fileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await dto.Image.CopyToAsync(stream);
+            }
+
+            imgUrl = "/images/" + fileName;
+        }
+
+        var auction = new Auction
+        {
+            Title = dto.Title,
+            Description = dto.Description,
+            StartDate = dto.StartDate,
+            EndDate = dto.EndDate,
+            Price = dto.Price,
+            ImgUrl = imgUrl,
+            IsDone = false
+        };
+
+        _db.Auctions.Add(auction);
         await _db.SaveChangesAsync();
 
-        return Ok(item);
+        return Ok(auction);
     }
 
     [HttpPost("{auctionId}/bid")]

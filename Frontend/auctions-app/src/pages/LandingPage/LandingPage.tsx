@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { allAuctions } from "../../services/auctionsService";
+import failImg from "../../assets/No-Image-Placeholder.svg";
 
 import "./LandingPage.css";
 
@@ -13,6 +14,7 @@ type Auction = {
 	description: string;
 	startDate: string;
 	endDate: string;
+	imgUrl: string
 };
 
 function LandingPage() {
@@ -21,10 +23,14 @@ function LandingPage() {
 	const [auctions, setAuctions] = useState<Auction[]>([]);
 	const [search, setSearch] = useState("");
 
+	const API_BASE = "http://localhost:5153";
+
 	const filteredAuctions = useMemo(() => {
 		return auctions.filter((auction) =>
 			auction.title.toLowerCase().includes(search.toLowerCase()),
 		);
+
+
 	}, [auctions, search]);
 
 	useEffect(() => {
@@ -82,6 +88,10 @@ function LandingPage() {
 							key={auction.id}
 							onClick={() => toSelectedAuctionPage(auction)}
 						>
+							<img
+								src={auction.imgUrl ? `${API_BASE}${auction.imgUrl}` : failImg}
+								alt={auction.title}
+							/>
 							<span className="auction-title">{auction.title}</span>
 							<span className="auction-price">{auction.price} €</span>
 							<span className="auction-info">{auction.description}</span>

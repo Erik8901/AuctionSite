@@ -14,7 +14,6 @@ function LoginPage() {
         const token = localStorage.getItem("token");
 
         if (token) {
-            console.log(token)
             navigate('/auctions');
         }
     }, [navigate]);

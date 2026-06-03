@@ -13,5 +13,8 @@ public class Auction
     public decimal Price { get; set; }
     public bool IsDone { get; set; }
 
+    public string ImgUrl { get; set; } = "";
+
+
     public List<Bid> Bids { get; set; } = new();
 }

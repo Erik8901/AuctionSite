@@ -12,6 +12,7 @@ function AddAuctionPage() {
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(new Date());
 	const [createdBy, setCreatedBy] = useState("");
+	const [image, setImage] = useState<File | null>(null);
 
 	const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ function AddAuctionPage() {
 				atob(base64)
 					.split("")
 					.map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-					.join(""),
+					.join("")
 			);
 
 			return JSON.parse(jsonPayload);
@@ -40,103 +41,84 @@ function AddAuctionPage() {
 			"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
 			];
 
-		console.log("Email:", email);
 		setCreatedBy(email);
 	}, []);
 
 	const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const auction = {
-			title,
-			description,
-			price: Number(price),
-			startDate,
-			endDate,
-			createdBy,
-		};
+		// ✅ USE FORM DATA (IMPORTANT)
+		const formData = new FormData();
 
-		console.log(auction.price)
+		formData.append("title", title);
+		formData.append("description", description);
+		formData.append("price", price);
+		formData.append("startDate", startDate.toISOString());
+		formData.append("endDate", endDate.toISOString());
+		formData.append("createdBy", createdBy);
+
+		// ✅ IMAGE FILE
+		if (image) {
+			formData.append("image", image);
+		}
 
 		try {
 			const response = await fetch("http://localhost:5153/api/auction", {
 				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(auction),
+				body: formData, // ❌ no JSON headers
 			});
 
 			if (!response.ok) {
+				const errorData = await response.text();
+				console.log("ERROR:", errorData);
 				throw new Error("Failed to create auction");
 			}
 
-			const data = await response.json();
+			await response.json();
 
 			alert("Auction created");
-
-			// navigate("/");
+			navigate("/");
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	return (
-		<>
-			<div className="add-auction-container">
-				<form onSubmit={addNewAuction}>
-					<h1 className="h1-title">Add New Auction</h1>
-					<div className="login-fields">
-						<label className="login-label">Title</label>
-						<input
-							className="login-inputs"
-							type="text"
-							autoComplete="title"
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-							placeholder="title"
-						/>
+		<div className="add-auction-container">
+			<form onSubmit={addNewAuction}>
+				<h1 className="h1-title">Add New Auction</h1>
 
-						<label className="login-label">Description</label>
-						<input
-							className="login-inputs"
-							type="text"
-							autoComplete="current-password"
-							value={description}
-							onChange={(e) => setDescription(e.target.value)}
-							placeholder="description"
-						/>
-						<label className="login-label">Price</label>
-						<input
-							className="login-inputs"
-							type="number"
-							autoComplete="current-password"
-							value={price}
-							onChange={(e) => setPrice(e.target.value)}
-							placeholder="price in €"
-						/>
-						<div className="select-date">
-							<span className="pick-date">Start Date: </span>
-							<DatePicker
-								className="date-pick"
-								selected={startDate}
-								onChange={(date: any) => setStartDate(date)}
-							/>
-							<span className="pick-date">End Date: </span>
-							<DatePicker
-								className="date-pick"
-								selected={endDate}
-								onChange={(date: any) => setEndDate(date)}
-							/>
-						</div>
+				<div className="login-fields">
+					<label>Title</label>
+					<input value={title} onChange={(e) => setTitle(e.target.value)} />
 
-						<button className="btn-add-new-auction" type="submit">
-							Add new Auction
-						</button>
+					<label>Description</label>
+					<input value={description} onChange={(e) => setDescription(e.target.value)} />
+
+					<label>Price</label>
+					<input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+
+					{/* ✅ IMAGE UPLOAD INPUT */}
+					<label>Image</label>
+					<input
+						type="file"
+						accept="image/*"
+						onChange={(e) => {
+							if (e.target.files?.[0]) {
+								setImage(e.target.files[0]);
+							}
+						}}
+					/>
+
+					<div className="select-date">
+						<DatePicker selected={startDate} onChange={(d: any) => setStartDate(d)} />
+						<DatePicker selected={endDate} onChange={(d: any) => setEndDate(d)} />
 					</div>
-				</form>
-			</div>
-		</>
+
+					<button type="submit">Add new Auction</button>
+				</div>
+			</form>
+		</div>
 	);
 }
 

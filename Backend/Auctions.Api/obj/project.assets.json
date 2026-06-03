@@ -3854,11 +3854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\erikj\\Desktop\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
+      "projectUniqueName": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
       "projectName": "Auctions.Api",
-      "projectPath": "C:\\Users\\erikj\\Desktop\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
+      "projectPath": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Auctions.Api.csproj",
       "packagesPath": "C:\\Users\\erikj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\erikj\\Desktop\\AuctionSite\\Backend\\Auctions.Api\\obj\\",
+      "outputPath": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3877,7 +3877,6 @@
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {}
         }
@@ -3892,11 +3891,10 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
-        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "BCrypt.Net-Next": {
@@ -3945,7 +3943,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
