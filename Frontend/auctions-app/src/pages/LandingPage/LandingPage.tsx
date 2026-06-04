@@ -79,7 +79,7 @@ function LandingPage() {
 			/>
 
 			<div className="auctions-container">
-				<h1>Recent Auctions</h1>
+				{/* <h1>Recent Auctions</h1> */}
 
 				<div className="auctions-list">
 					{filteredAuctions.map((auction) => (
@@ -89,12 +89,15 @@ function LandingPage() {
 							onClick={() => toSelectedAuctionPage(auction)}
 						>
 							<img
+								className="auction-img"
 								src={auction.imgUrl ? `${API_BASE}${auction.imgUrl}` : failImg}
 								alt={auction.title}
 							/>
-							<span className="auction-title">{auction.title}</span>
-							<span className="auction-price">{auction.price} €</span>
-							<span className="auction-info">{auction.description}</span>
+							<div className="aution-landing-page-info">
+								<span className="auction-title">{auction.title}</span>
+								<span className="auction-info">{auction.description}</span>
+								<span className="auction-price">{auction.price} €</span>
+							</div>
 						</div>
 					))}
 				</div>

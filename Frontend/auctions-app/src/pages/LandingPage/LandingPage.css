@@ -4,16 +4,13 @@ h1 {
 }
 
 .auctions-container {
-	background: #ffc94d;
 	margin: 0 7rem;
-	padding: 1rem;
-	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 }
 
 .auction {
-	background: #59b292;
+	/* background: #59b292;
 	margin: 1rem;
 	border-radius: 10px;
 	padding: 1rem;
@@ -22,21 +19,36 @@ h1 {
 	flex-direction: column;
 	width: stretch;
 	margin: 0 auto;
-	gap: 1rem;
+	gap: 1rem; */
+	display: flex;
+	height: fit-content;
+	max-height: 110px;
+	overflow-y: auto;
 	cursor: pointer;
+}
+
+.auction-img {
+	width: 160px;
+	height: 110px;
+	object-fit: cover;
+	display: block;
 }
 
 .auction-title {
 	font-weight: 1000;
-	font-size: 20px;
+	font-size: 16px;
+	color: #006989;
 }
 
 .auction-price {
-	font-size: 16px;
+	margin-top: 16px;
+	font-size: 20px;
+	color: #006989;
 }
 
 .auction-info {
 	font-size: 12px;
+	color: dimgray;
 }
 
 .btn-create-new-auction {
@@ -52,15 +64,17 @@ h1 {
 
 .search {
 	padding: 10px;
-	border: 2px solid #ffc94d;
+	border: 2px solid #006989;
 	width: 30%;
 	border-radius: 10px;
 	margin: 1rem 7rem;
 }
 
-img {
-	width: 7rem;
-	border-radius: 10px;
+.aution-landing-page-info {
+	display: flex;
+	flex-direction: column;
+	padding: 6px 10px;
+	gap: 10px;
 }
 
 .search:focus {

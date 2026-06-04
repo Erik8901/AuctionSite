@@ -1,23 +1,23 @@
 .header {
-	background: #59b292;
+	background: #fff;
 	height: 4rem;
 	display: flex;
 	position: sticky;
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 0 7rem 0 7rem;
-	border-bottom: 4px solid #ffc94d;
+	border-bottom: 4px solid #006989;
 }
 
 h2 {
-	color: #fff;
+	color: #006989;
 }
 
 .btn-logout {
 	background: none;
 	border: none;
-	color: #fff;
-	font-size: 1.3rem;
+	color: #006989;
+	font-size: 1rem;
 	cursor: pointer;
 	font-weight: 700;
 }
@@ -27,7 +27,7 @@ h2 {
 }
 
 .user-logins {
-	color: #ffc94d;
+	color: #006989;
 }
 
 .logged-in {

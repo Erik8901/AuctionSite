@@ -62,8 +62,7 @@
               "RelativeToolTip": "Dtos\\CreateAuctionDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T09:05:28.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-03T09:05:28.244Z"
             },
             {
               "$type": "Document",
@@ -87,8 +86,7 @@
               "RelativeToolTip": "Data\\AuctionDbContext.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T07:53:35.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-26T07:53:35.101Z"
             },
             {
               "$type": "Document",
@@ -112,8 +110,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAYwBoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T06:09:57.402Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-26T06:09:57.402Z"
             },
             {
               "$type": "Document",
@@ -137,8 +134,7 @@
               "RelativeToolTip": "Models\\Auction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-22T13:33:38.45Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T13:33:38.45Z"
             },
             {
               "$type": "Document",
@@ -150,8 +146,7 @@
               "RelativeToolTip": "Controllers\\AuctionController.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAAAEEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-22T07:33:54.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T07:33:54.721Z"
             },
             {
               "$type": "Document",
