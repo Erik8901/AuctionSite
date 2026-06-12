@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import failImg from "../../assets/No-Image-Placeholder.svg";
 
 import "./AuctionPage.css";
 
@@ -13,7 +14,7 @@ type Bid = {
 
 function AuctionPage() {
 	const location = useLocation();
-
+	const API_BASE = "http://localhost:5153";
 	const [auction, setAuction] = useState(location.state?.auction);
 	const [userAuction, setUserAuction] = useState(false);
 	const [openNewBidForm, setOpenNewBidForm] = useState(false);
@@ -52,8 +53,8 @@ function AuctionPage() {
 	const highestBid: Bid | null =
 		auction.bids.length > 0
 			? auction.bids.reduce((max: Bid, bid: Bid) =>
-					bid.price > max.price ? bid : max,
-				)
+				bid.price > max.price ? bid : max,
+			)
 			: null;
 
 	async function AddBid(e: React.FormEvent) {
@@ -113,10 +114,23 @@ function AuctionPage() {
 							)}
 						</div>
 					</div>
+					{!userAuction && (
+						<button
+							className="btn-add-bid"
+							onClick={() => setOpenNewBidForm(!openNewBidForm)}
+						>
+							Add New Bid
+						</button>
+					)}
 				</div>
 
 				<div className="selected-auction-bidder-info">
 					<div className="bids-list">
+						<img
+							className="auction-page-img"
+							src={auction.imgUrl ? `${API_BASE}${auction.imgUrl}` : failImg}
+							alt={auction.title}
+						/>
 						<span>Bidders:</span>
 						{auction.bids?.map((bid: any) => (
 							<div key={bid.id} className="bidders-info">
@@ -125,16 +139,10 @@ function AuctionPage() {
 							</div>
 						))}
 					</div>
+
 				</div>
 			</div>
-			{!userAuction && (
-				<button
-					className="btn-add-bid"
-					onClick={() => setOpenNewBidForm(!openNewBidForm)}
-				>
-					Add New Bid
-				</button>
-			)}
+
 			{openNewBidForm && (
 				<div className="new-bid-form">
 					<form onSubmit={AddBid}>

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
+import HeaderTop from "./components/Header-Top/HeaderTop";
 import "./App.css";
 
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -12,6 +13,7 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
+				<HeaderTop />
 				<Header />
 				<Routes>
 					<Route path="/" element={<Navigate to="/login" replace />} />

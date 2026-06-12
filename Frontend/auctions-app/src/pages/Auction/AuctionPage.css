@@ -1,5 +1,4 @@
 .selected-auction {
-	background: #ffc94d;
 	display: flex;
 	flex-direction: column;
 	margin: 1rem 6rem;
@@ -10,10 +9,9 @@
 }
 
 .selected-auction-container {
-	background: #ffc94d;
-	color: #fff;
 	display: flex;
-	flex-direction: row;
+	color: #fff;
+	flex-direction: row-reverse;
 	margin: 1rem 6rem;
 	padding-bottom: 3rem;
 	border-radius: 10px;
@@ -22,9 +20,9 @@
 
 .selected-auction-info,
 .selected-auction-bidder-info {
-	background: #59b292;
+
 	padding: 2rem 2rem;
-	color: #fff;
+	color: #006989;
 	border-radius: 10px;
 	margin: 2rem 2rem;
 	display: flex;
@@ -72,7 +70,7 @@
 
 
 .btn-add-bid {
-	background: #59b292;
+	background: #006989;
 	color: #fff;
 	border: none;
 	height: 40px;
@@ -81,7 +79,6 @@
 	cursor: pointer;
 	border-radius: 10px;
 	width: 10rem;
-	margin-left: 7rem;
 }
 
 .bid-fields {
