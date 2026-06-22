@@ -23,6 +23,13 @@
 
 #root>div.add-auction-container>form>div>div>div:nth-child(1)>div>input[type=text] {
 	all: unset;
+	font-weight: normal;
+	background: #fff;
+	position: relative;
+	display: inline-block;
+	width: 11rem;
+	color: #000;
+	font-size: 15px;
 }
 
 .btn-add-new-auction {
