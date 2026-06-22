@@ -4,4 +4,5 @@ body {
 	margin-top: 3rem;
 	font-weight: 700;
 	background: #fff;
+	overflow-y: scroll;
 }

@@ -54,9 +54,7 @@ function LandingPage() {
 		fetchAuctions();
 	}, []);
 
-	function toAddNewAuction() {
-		navigate("/add-new-auction");
-	}
+
 
 	function toSelectedAuctionPage(auction: Auction) {
 		navigate("/auction", {
@@ -70,13 +68,15 @@ function LandingPage() {
 
 	return (
 		<>
-			<input
-				className="search"
-				type="text"
-				placeholder="Search for an Auction..."
-				value={search}
-				onChange={searchAuctions}
-			/>
+			<div className="search-container">
+				<input
+					className="search"
+					type="text"
+					placeholder="Search for an Auction..."
+					value={search}
+					onChange={searchAuctions}
+				/>
+			</div>
 
 			<div className="auctions-container">
 				{/* <h1>Recent Auctions</h1> */}
@@ -103,9 +103,7 @@ function LandingPage() {
 				</div>
 			</div>
 
-			<button className="btn-create-new-auction" onClick={toAddNewAuction}>
-				Create new Auction
-			</button>
+
 		</>
 	);
 }

@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import MainMenu from "../MainMenu/MainMenu"
+import { toggleMenu } from "../../slices/MainMenuSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 import "./Header.css";
 
 function Header() {
+	const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
+	const dispatch = useAppDispatch();
 
 	const [email, setEmail] = useState("");
-
+	const isOpen = useAppSelector((state) => state.menu.isOpen);
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 
@@ -57,17 +62,32 @@ function Header() {
 
 	return (
 		<div className="header">
-			<h2>Auctions Site</h2>
-			{email &&
-				<div className="user-info-logout-container">
+			<div className="header-left">
+				<button className="hamburger" aria-label="Menu" onClick={() => dispatch(toggleMenu())}>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<h2 className="header-title" onClick={() => navigate("/auctions")}>Auctions Site</h2>
+				{/* <p>Menu is: {isOpen ? "OPEN" : "CLOSED"}</p> */}
+			</div>
 
-					<span className="user-logins"><span className="logged-in">Logged In as: </span>{email}</span>
+			{isOpen && (
+				<MainMenu />
+			)}
 
-					<button className="btn-logout" onClick={logout}>
-						Logout
-					</button>
-				</div>
-			}
+			<div className="header-right">
+				{email &&
+					<div className="user-info-logout-container">
+
+						<span className="user-logins"><span className="logged-in">Logged In as: </span>{email}</span>
+
+						<button className="btn-logout" onClick={logout}>
+							Logout
+						</button>
+					</div>
+				}
+			</div>
 		</div>
 	);
 }

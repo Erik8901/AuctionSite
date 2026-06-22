@@ -47,7 +47,7 @@ function AddAuctionPage() {
 	const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// ✅ USE FORM DATA (IMPORTANT)
+
 		const formData = new FormData();
 
 		formData.append("title", title);
@@ -57,7 +57,7 @@ function AddAuctionPage() {
 		formData.append("endDate", endDate.toISOString());
 		formData.append("createdBy", createdBy);
 
-		// ✅ IMAGE FILE
+
 		if (image) {
 			formData.append("image", image);
 		}
@@ -65,7 +65,7 @@ function AddAuctionPage() {
 		try {
 			const response = await fetch("http://localhost:5153/api/auction", {
 				method: "POST",
-				body: formData, // ❌ no JSON headers
+				body: formData,
 			});
 
 			if (!response.ok) {
@@ -85,10 +85,10 @@ function AddAuctionPage() {
 
 	return (
 		<div className="add-auction-container">
-			<form onSubmit={addNewAuction}>
+			<form onSubmit={addNewAuction} className="create-new-auction-form">
 				<h1 className="h1-title">Add New Auction</h1>
 
-				<div className="login-fields">
+				<div className="create-new-auction-fields">
 					<label>Title</label>
 					<input value={title} onChange={(e) => setTitle(e.target.value)} />
 
@@ -98,7 +98,7 @@ function AddAuctionPage() {
 					<label>Price</label>
 					<input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
 
-					{/* ✅ IMAGE UPLOAD INPUT */}
+
 					<label>Image</label>
 					<input
 						type="file"

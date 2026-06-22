@@ -1,16 +1,53 @@
 .header {
 	background: #fff;
-	height: 4rem;
+	max-height: 4rem;
 	display: flex;
 	position: sticky;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 0 7rem 0 7rem;
+	padding: 0px 2rem 0 2rem;
 	border-bottom: 4px solid #006989;
+	align-items: center;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.hamburger {
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 6px;
+}
+
+.hamburger span {
+	display: block;
+	width: 27px;
+	height: 3px;
+	margin: 0 auto;
+	background-color: #006989;
+	border-radius: 2px;
+}
+
+.hamburger:hover span {
+	background-color: #bebebe;
 }
 
 h2 {
 	color: #006989;
+}
+
+.header-title {
+	cursor: pointer;
 }
 
 .btn-logout {
