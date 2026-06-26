@@ -3,3 +3,4 @@ wwwroot\images\6475c47f-7f8a-4081-ba95-3fa5bddc66f1.png
 wwwroot\images\3903110f-2241-4801-a78a-bbbb7e55b03f.png
 wwwroot\images\09c935c3-1ebf-425d-aaf7-5cbb948f7fe6.jpg
 wwwroot\images\b52a781c-8b95-4c73-bfc0-eb5509f28267.jpg
+wwwroot\images\e9c225d2-47b5-4b81-8700-c63893a68e05.webp

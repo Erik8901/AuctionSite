@@ -64,9 +64,10 @@ function Header() {
 		<div className="header">
 			<div className="header-left">
 				<button className="hamburger" aria-label="Menu" onClick={() => dispatch(toggleMenu())}>
-					<span></span>
-					<span></span>
-					<span></span>
+					<span className={isOpen ? "close" : "open"}></span>
+					<span className={isOpen ? "close" : "open"}></span>
+					<span className={isOpen ? "close" : "open"}></span>
+					<span className={isOpen ? "openX" : "closeX"}>X</span>
 				</button>
 				<h2 className="header-title" onClick={() => navigate("/auctions")}>Auctions Site</h2>
 				{/* <p>Menu is: {isOpen ? "OPEN" : "CLOSED"}</p> */}

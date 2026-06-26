@@ -79,7 +79,7 @@ function LandingPage() {
 			</div>
 
 			<div className="auctions-container">
-				{/* <h1>Recent Auctions</h1> */}
+				<h1 className="recent-auctions">Recent Auctions :</h1>
 
 				<div className="auctions-list">
 					{filteredAuctions.map((auction) => (

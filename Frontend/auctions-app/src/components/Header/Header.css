@@ -29,17 +29,37 @@
 	gap: 6px;
 }
 
-.hamburger span {
+.hamburger .open {
 	display: block;
-	width: 27px;
+	width: 21px;
 	height: 3px;
 	margin: 0 auto;
 	background-color: #006989;
 	border-radius: 2px;
+	transition: transform 0.3s ease;
 }
 
-.hamburger:hover span {
+.hamburger:hover .open {
 	background-color: #bebebe;
+}
+
+.hamburger .close {
+	display: none;
+}
+
+.hamburger .openX {
+	display: block;
+	color: #006989;
+	font-weight: 900;
+	font-size: 24px;
+}
+
+.hamburger .closeX {
+	display: none;
+}
+
+.hamburger:hover .openX {
+	color: #bebebe;
 }
 
 h2 {
