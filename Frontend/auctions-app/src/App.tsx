@@ -1,6 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import HeaderTop from "./components/Header-Top/HeaderTop";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchAuctions } from "./slices/AuctionsSlice"
+import { useAppDispatch } from "./hooks";
 
 import "./App.css";
 
@@ -11,6 +15,11 @@ import AddAuctionPage from "./pages/AddAuctionPage/AddAuctionPage";
 import AuctionPage from "./pages/Auction/AuctionPage";
 
 function App() {
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(fetchAuctions());
+	}, [dispatch]);
 	return (
 		<>
 			<BrowserRouter>

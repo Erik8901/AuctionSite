@@ -70,7 +70,9 @@ public class AuctionController : ControllerBase
             EndDate = dto.EndDate,
             Price = dto.Price,
             ImgUrl = imgUrl,
-            IsDone = false
+            IsDone = false,
+            Category = dto.Category
+
         };
 
         _db.Auctions.Add(auction);

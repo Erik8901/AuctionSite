@@ -87,11 +87,6 @@ h2 {
 	color: #006989;
 }
 
-.logged-in {
-	color: #fff;
-}
-
-
 .user-info-logout-container {
 	display: flex;
 	align-items: center;

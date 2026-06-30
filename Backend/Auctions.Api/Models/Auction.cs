@@ -15,6 +15,7 @@ public class Auction
 
     public string ImgUrl { get; set; } = "";
 
+    public string? Category { get; set; } = "";
 
     public List<Bid> Bids { get; set; } = new();
 }

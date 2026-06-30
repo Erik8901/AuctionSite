@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\controllers\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:controllers\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\models\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:models\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,24 +11,16 @@
       "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:dtos\\createauctiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\data\\auctiondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:data\\auctiondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\controllers\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:controllers\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\models\\createbiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:models\\createbiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|c:\\users\\erikj\\documents\\auctionsite\\backend\\auctions.api\\dtos\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15894D3E-E341-7E0A-D2FA-8E1691F7C45D}|Auctions.Api.csproj|solutionrelative:dtos\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,19 +38,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "CreateAuctionDto.cs",
               "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Dtos\\CreateAuctionDto.cs",
               "RelativeDocumentMoniker": "Dtos\\CreateAuctionDto.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Dtos\\CreateAuctionDto.cs",
               "RelativeToolTip": "Dtos\\CreateAuctionDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T09:05:28.244Z"
+              "WhenOpened": "2026-06-03T09:05:28.244Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "CreateBidDto.cs",
               "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Models\\CreateBidDto.cs",
               "RelativeDocumentMoniker": "Models\\CreateBidDto.cs",
@@ -74,90 +59,44 @@
               "RelativeToolTip": "Models\\CreateBidDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T08:48:29.974Z"
+              "WhenOpened": "2026-05-26T08:48:29.974Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuctionDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Data\\AuctionDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\AuctionDbContext.cs",
-              "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Data\\AuctionDbContext.cs",
-              "RelativeToolTip": "Data\\AuctionDbContext.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T07:53:35.101Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Bid.cs",
-              "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Models\\Bid.cs",
-              "RelativeDocumentMoniker": "Models\\Bid.cs",
-              "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Models\\Bid.cs",
-              "RelativeToolTip": "Models\\Bid.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T07:51:17.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAYwBoAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T06:09:57.402Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Dtos\\RegisterRequest.cs",
-              "RelativeDocumentMoniker": "Dtos\\RegisterRequest.cs",
-              "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Dtos\\RegisterRequest.cs",
-              "RelativeToolTip": "Dtos\\RegisterRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T06:09:51.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Auction.cs",
               "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Models\\Auction.cs",
               "RelativeDocumentMoniker": "Models\\Auction.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Models\\Auction.cs",
               "RelativeToolTip": "Models\\Auction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswAoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-22T13:33:38.45Z"
+              "WhenOpened": "2026-05-22T13:33:38.45Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AuctionController.cs",
               "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Controllers\\AuctionController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuctionController.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Controllers\\AuctionController.cs",
               "RelativeToolTip": "Controllers\\AuctionController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAEkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-22T07:33:54.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\erikj\\Documents\\AuctionSite\\Backend\\Auctions.Api\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAADgv1AAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswDYAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T12:17:38.693Z",
               "EditorCaption": ""

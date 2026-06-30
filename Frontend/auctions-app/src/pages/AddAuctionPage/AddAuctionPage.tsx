@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import type { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 import "./AddAuctionpage.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,8 +15,21 @@ function AddAuctionPage() {
 	const [endDate, setEndDate] = useState(new Date());
 	const [createdBy, setCreatedBy] = useState("");
 	const [image, setImage] = useState<File | null>(null);
+	const [selectedCategory, setSelectedCategory] = useState("");
+	const [manualCategory, setManualCategory] = useState("");
+
+	const category = manualCategory || selectedCategory;
 
 	const navigate = useNavigate();
+
+	const auctions = useSelector(
+		(state: RootState) => state.auctions.items
+	);
+
+	const categories = [
+		...new Set(auctions.map((auction) => auction.category))
+	];
+
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -52,6 +67,7 @@ function AddAuctionPage() {
 
 		formData.append("title", title);
 		formData.append("description", description);
+		formData.append("category", category);
 		formData.append("price", price);
 		formData.append("startDate", startDate.toISOString());
 		formData.append("endDate", endDate.toISOString());
@@ -91,6 +107,31 @@ function AddAuctionPage() {
 				<div className="create-new-auction-fields">
 					<label>Title</label>
 					<input value={title} onChange={(e) => setTitle(e.target.value)} />
+
+					<label>Select a Category:</label>
+					<select
+						value={selectedCategory}
+						onChange={(e) => {
+							setSelectedCategory(e.target.value);
+							setManualCategory(""); // clear manual input
+						}}
+						disabled={manualCategory !== ""}
+					>
+						<option value="">All categories</option>
+
+						{categories.map((cat) => (
+							<option key={cat} value={cat}>
+								{cat}
+							</option>
+						))}
+					</select>
+
+					<label>Or add Category Manually</label>
+					<input
+						value={manualCategory}
+						onChange={(e) => setManualCategory(e.target.value)}
+						disabled={selectedCategory !== ""}
+					/>
 
 					<label>Description</label>
 					<input value={description} onChange={(e) => setDescription(e.target.value)} />
