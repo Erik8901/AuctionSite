@@ -26,4 +26,8 @@
     .text-newsletter-sub {
         padding: 0.6rem;
     }
+
+    .header-top-main-container {
+        width: 100%;
+    }
 }

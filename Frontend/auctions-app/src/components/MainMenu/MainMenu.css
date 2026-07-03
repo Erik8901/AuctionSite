@@ -33,3 +33,11 @@
 }
 
 .create-new-auction {}
+
+@media only screen and (max-width: 1200px) {
+
+    .main-menu.open {
+        width: 100%;
+    }
+
+}
