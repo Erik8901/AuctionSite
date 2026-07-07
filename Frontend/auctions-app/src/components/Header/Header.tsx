@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import MainMenu from "../MainMenu/MainMenu"
 import { toggleMenu } from "../../slices/MainMenuSlice";
+import { userStatus } from "../../slices/UserLoggedSlice"
 import { useAppDispatch, useAppSelector } from "../../hooks";
 
 import "./Header.css";
+
 
 function Header() {
 	const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
@@ -14,10 +16,14 @@ function Header() {
 
 	const [email, setEmail] = useState("");
 	const isOpen = useAppSelector((state) => state.menu.isOpen);
+
+
+
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 
 		function parseJwt(token: string | null) {
+
 			if (!token) return null;
 
 			try {
@@ -56,6 +62,7 @@ function Header() {
 
 	function logout() {
 		localStorage.removeItem("token");
+		dispatch(userStatus(false));
 		setEmail("");
 		navigate("/login");
 	}
@@ -78,16 +85,22 @@ function Header() {
 			)}
 
 			<div className="header-right">
-				{email &&
+				{email ? (
 					<div className="user-info-logout-container">
-
-						<span className="user-logins"><span className="logged-in">Logged In as: </span>{email}</span>
+						<span className="user-logins">
+							<span className="logged-in">Logged In as: </span>
+							{email}
+						</span>
 
 						<button className="btn-logout" onClick={logout}>
 							Logout
 						</button>
 					</div>
-				}
+				) : (
+					<button className="btn-logout" onClick={() => navigate("/login")}>
+						Login
+					</button>
+				)}
 			</div>
 		</div>
 	);

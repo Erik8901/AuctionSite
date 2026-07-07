@@ -10,9 +10,29 @@ function RegisterPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPassword] = useState("");
+    const [errorMessageEmail, setErrorMessageEmail] = useState("");
+    const [errorMessagePassword, setErrorMessagePassword] = useState("");
+    const [errorMessagePasswordMatch, setErrorMessagePasswordMatch] = useState("");
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        console.log(email, password)
+
+        if (email === "") {
+            setErrorMessageEmail("Please enter e valid email address to register");
+            return
+        }
+
+        if (password === "") {
+            setErrorMessagePassword("Please enter e valid password to register");
+            return
+        }
+
+        if (password !== confirmedPassword) {
+            setErrorMessagePasswordMatch("Passwords must Match");
+            return
+        }
 
         const data = await register(
             email,
@@ -35,7 +55,14 @@ function RegisterPage() {
                 <h1 className='register-page-title'>Register</h1>
                 <form className="register-form" onSubmit={handleRegister}>
                     <div className="login-fields">
-                        <label className="login-label">Email</label>
+                        <div className='errors-msgs'>
+                            <label className="login-label">Email</label>
+                            {errorMessageEmail && (
+                                <span className="msg-email">
+                                    {errorMessageEmail}
+                                </span>
+                            )}
+                        </div>
                         <input
                             className="login-inputs"
                             type="email"
@@ -44,8 +71,14 @@ function RegisterPage() {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="user@mail.com"
                         />
-
-                        <label className="login-label">Password</label>
+                        <div className='errors-msgs'>
+                            <label className="login-label">Password</label>
+                            {errorMessagePassword && (
+                                <span className="msg-password">
+                                    {errorMessagePassword}
+                                </span>
+                            )}
+                        </div>
                         <input
                             className="login-inputs"
                             type="password"
@@ -54,8 +87,14 @@ function RegisterPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="password"
                         />
-
-                        <label className="login-label">Confirm Password</label>
+                        <div className='errors-msgs'>
+                            <label className="login-label">Confirm Password</label>
+                            {errorMessagePasswordMatch && (
+                                <span className="msg-password">
+                                    {errorMessagePasswordMatch}
+                                </span>
+                            )}
+                        </div>
                         <input
                             className="login-inputs"
                             type="password"

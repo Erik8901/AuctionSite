@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/authService';
+import { userStatus } from "../../slices/UserLoggedSlice"
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import './LoginPage.css'
 
 function LoginPage() {
@@ -8,6 +10,7 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [loginMessage, setLoginMessage] = useState("");
 
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,11 +28,16 @@ function LoginPage() {
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if (email == "" || password == "") {
+            console.log("Login failed");
+            setLoginMessage("Invalid email or password");
+            return
+        }
         try {
             const data = await login(email, password);
 
             localStorage.setItem("token", data.token);
-
+            dispatch(userStatus(true));
             alert("User Successfully Logged in!");
             navigate('/');
 
@@ -37,10 +45,6 @@ function LoginPage() {
             console.log("Login failed");
             setLoginMessage("Invalid email or password");
         }
-
-
-
-
     }
 
     return (

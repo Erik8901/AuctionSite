@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import MainMenuSlice from "../slices/MainMenuSlice";
 import AuctionsSlace from "../slices/AuctionsSlice"
+import UserLoggedInSlice from "../slices/UserLoggedSlice"
 
 export const store = configureStore({
     reducer: {
         menu: MainMenuSlice,
-        auctions: AuctionsSlace
+        auctions: AuctionsSlace,
+        user: UserLoggedInSlice,
     },
 });
 
