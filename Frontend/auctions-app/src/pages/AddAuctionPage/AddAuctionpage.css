@@ -73,6 +73,22 @@
 	all: unset;
 }
 
+.success {
+	font-size: 2rem;
+	margin-top: 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.success-text {
+	color: #006989;
+}
+
+.success-text-green {
+	color: #4BB543;
+}
+
 @media only screen and (max-width: 1000px) {
 
 	.add-auction-container {

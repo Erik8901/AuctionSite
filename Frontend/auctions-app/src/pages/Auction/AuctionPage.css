@@ -91,6 +91,10 @@ img {
 	width: 27rem;
 }
 
+.error-msg {
+	color: #ed1c24;
+}
+
 @media (max-width: 1600px) {
 	.selected-auction-container {
 		flex-direction: column;

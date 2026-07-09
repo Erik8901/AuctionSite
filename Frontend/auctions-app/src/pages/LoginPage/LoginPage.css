@@ -61,11 +61,26 @@
 .register {
     color: #006989;
     cursor: pointer;
-    text-align: center;
 }
 
 .register:hover {
     color: #D3D3D3;
+}
+
+.success {
+    font-size: 2rem;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.success-text {
+    color: #006989;
+}
+
+.success-text-green {
+    color: #4BB543;
 }
 
 

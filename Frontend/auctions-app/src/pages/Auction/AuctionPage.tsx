@@ -19,6 +19,7 @@ function AuctionPage() {
 	const [userAuction, setUserAuction] = useState(false);
 	const [openNewBidForm, setOpenNewBidForm] = useState(false);
 	const [addBid, setAddBid] = useState<number>(0);
+	const [bidHigher, setBidhigher] = useState(false);
 
 	if (!auction) return <div>No auction found</div>;
 
@@ -63,7 +64,9 @@ function AuctionPage() {
 		console.log("highestBid " + highestBid?.price);
 
 		if (addBid <= (highestBid?.price ?? 0)) {
-			alert("Your bid some must be higher then the highest in order to bid");
+			setBidhigher(!bidHigher)
+
+			// alert("Your bid some must be higher then the highest in order to bid");
 			return;
 		}
 
@@ -159,6 +162,11 @@ function AuctionPage() {
 							<button className="btn-add-bid" type="submit">
 								Add Bid
 							</button>
+							{bidHigher && (
+								<span className="error-msg">
+									Your bid amount must be higher than the highest bid in order to place a bid.
+								</span>
+							)}
 						</div>
 					</form>
 				</div>

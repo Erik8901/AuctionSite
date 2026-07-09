@@ -13,11 +13,11 @@ function RegisterPage() {
     const [errorMessageEmail, setErrorMessageEmail] = useState("");
     const [errorMessagePassword, setErrorMessagePassword] = useState("");
     const [errorMessagePasswordMatch, setErrorMessagePasswordMatch] = useState("");
+    const [userSuccessfullyCreated, setUserSuccessfullyCreated] = useState(false);
+
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        console.log(email, password)
 
         if (email === "") {
             setErrorMessageEmail("Please enter e valid email address to register");
@@ -44,72 +44,86 @@ function RegisterPage() {
             data.token
         );
 
-        alert("User Successfully Registered!");
-        navigate('/auctions');
-    }
+        setUserSuccessfullyCreated(!userSuccessfullyCreated);
 
+        setTimeout(() => {
+            navigate('/auctions');
+        }, 3000);
+
+    }
 
     return (
         <>
             <div className='register-page-container'>
-                <h1 className='register-page-title'>Register</h1>
-                <form className="register-form" onSubmit={handleRegister}>
-                    <div className="login-fields">
-                        <div className='errors-msgs'>
-                            <label className="login-label">Email</label>
-                            {errorMessageEmail && (
-                                <span className="msg-email">
-                                    {errorMessageEmail}
-                                </span>
-                            )}
+                {userSuccessfullyCreated ?
+                    <div className="success">
+                        <div className='success-top'>
+                            <span className='success-text'>User <span className='success-text-green'>Successfully </span>Registered!</span>
                         </div>
-                        <input
-                            className="login-inputs"
-                            type="email"
-                            autoComplete="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="user@mail.com"
-                        />
-                        <div className='errors-msgs'>
-                            <label className="login-label">Password</label>
-                            {errorMessagePassword && (
-                                <span className="msg-password">
-                                    {errorMessagePassword}
-                                </span>
-                            )}
-                        </div>
-                        <input
-                            className="login-inputs"
-                            type="password"
-                            autoComplete="current-password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="password"
-                        />
-                        <div className='errors-msgs'>
-                            <label className="login-label">Confirm Password</label>
-                            {errorMessagePasswordMatch && (
-                                <span className="msg-password">
-                                    {errorMessagePasswordMatch}
-                                </span>
-                            )}
-                        </div>
-                        <input
-                            className="login-inputs"
-                            type="password"
-                            autoComplete="current-password"
-                            value={confirmedPassword}
-                            onChange={(e) => setConfirmedPassword(e.target.value)}
-                            placeholder="password"
-                        />
+                        <span className='success-text'>Redirecting...</span>
+                    </div> :
+                    <div className='register-page-inner-container'>
 
-                        <button className="login-btn" type="submit">
-                            Register
-                        </button>
+                        <h1 className='register-page-title'>Register</h1>
+                        <form className="register-form" onSubmit={handleRegister}>
+                            <div className="login-fields">
+                                <div className='errors-msgs'>
+                                    <label className="login-label">Email</label>
+                                    {errorMessageEmail && (
+                                        <span className="msg-email">
+                                            {errorMessageEmail}
+                                        </span>
+                                    )}
+                                </div>
+                                <input
+                                    className="login-inputs"
+                                    type="email"
+                                    autoComplete="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="user@mail.com"
+                                />
+                                <div className='errors-msgs'>
+                                    <label className="login-label">Password</label>
+                                    {errorMessagePassword && (
+                                        <span className="msg-password">
+                                            {errorMessagePassword}
+                                        </span>
+                                    )}
+                                </div>
+                                <input
+                                    className="login-inputs"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="password"
+                                />
+                                <div className='errors-msgs'>
+                                    <label className="login-label">Confirm Password</label>
+                                    {errorMessagePasswordMatch && (
+                                        <span className="msg-password">
+                                            {errorMessagePasswordMatch}
+                                        </span>
+                                    )}
+                                </div>
+                                <input
+                                    className="login-inputs"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    value={confirmedPassword}
+                                    onChange={(e) => setConfirmedPassword(e.target.value)}
+                                    placeholder="password"
+                                />
+
+                                <button className="login-btn" type="submit">
+                                    Register
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
+                }
+            </div >
         </>
     )
 }

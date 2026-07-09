@@ -9,6 +9,7 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginMessage, setLoginMessage] = useState("");
+    const [userSuccessfullyLoggedIn, setUserSuccessfullyLoggedIn] = useState(false);
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -38,8 +39,11 @@ function LoginPage() {
 
             localStorage.setItem("token", data.token);
             dispatch(userStatus(true));
-            alert("User Successfully Logged in!");
-            navigate('/');
+            setUserSuccessfullyLoggedIn(!userSuccessfullyLoggedIn);
+
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
 
         } catch (error) {
             console.log("Login failed");
@@ -49,50 +53,61 @@ function LoginPage() {
 
     return (
         <div className="login-component">
-            <h1 className="h1-title">Auctions App</h1>
+            {userSuccessfullyLoggedIn ?
+                <div className="success">
+                    <div className='success-top'>
+                        <span className='success-text'>User <span className='success-text-green'>Successfully </span>Logged In!</span>
+                    </div>
+                    <span className='success-text'>Redirecting...</span>
+                </div> :
+                <div className="login-component-inner-container">
 
-            <div className="error-msg">
-                {loginMessage && (
-                    <span className="login-fail">
-                        {loginMessage}
-                    </span>
-                )}
-            </div>
 
-            <form onSubmit={handleLogin}>
-                <div className="login-fields">
+                    <h1 className="h1-title">Auctions App</h1>
 
-                    <label className="login-label">Email</label>
-                    <input
-                        className="login-inputs"
-                        type="email"
-                        autoComplete="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="user@mail.com"
-                    />
+                    <div className="error-msg">
+                        {loginMessage && (
+                            <span className="login-fail">
+                                {loginMessage}
+                            </span>
+                        )}
+                    </div>
 
-                    <label className="login-label">Password</label>
-                    <input
-                        className="login-inputs"
-                        type="password"
-                        autoComplete="current-password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="password"
-                    />
+                    <form onSubmit={handleLogin}>
+                        <div className="login-fields">
 
-                    <button className="login-btn" type="submit">
-                        Login
-                    </button>
-                    <h4 className="register" onClick={toRegister}>
-                        Register
-                    </h4>
+                            <label className="login-label">Email</label>
+                            <input
+                                className="login-inputs"
+                                type="email"
+                                autoComplete="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="user@mail.com"
+                            />
+
+                            <label className="login-label">Password</label>
+                            <input
+                                className="login-inputs"
+                                type="password"
+                                autoComplete="current-password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="password"
+                            />
+
+                            <button className="login-btn" type="submit">
+                                Login
+                            </button>
+                            <h4 className="register" onClick={toRegister}>
+                                Register
+                            </h4>
+                        </div>
+
+                    </form>
+
                 </div>
-
-            </form>
-
-
+            }
         </div>
     )
 }

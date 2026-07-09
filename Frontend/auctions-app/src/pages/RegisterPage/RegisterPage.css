@@ -72,6 +72,22 @@
     max-width: 100%;
 }
 
+.success {
+    font-size: 2rem;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.success-text {
+    color: #006989;
+}
+
+.success-text-green {
+    color: #4BB543;
+}
+
 
 /* Tablets */
 @media (max-width: 768px) {
