@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
@@ -16,6 +17,18 @@ function MainMenu() {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.isLoggedIn
     );
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
 
 
     function toAddNewAuction() {

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import type { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
+import { toggleMenu } from "../../slices/MainMenuSlice";
+import { useAppSelector } from "../../hooks";
 
 import "./AddAuctionpage.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,6 +22,7 @@ function AddAuctionPage() {
 	const [auctionSuccessfullyCreated, setAuctionSuccessfullyCreated] = useState(false);
 
 	const category = manualCategory || selectedCategory;
+	const isOpen = useAppSelector((state) => state.menu.isOpen);
 
 	const navigate = useNavigate();
 
@@ -62,7 +65,7 @@ function AddAuctionPage() {
 
 	const addNewAuction = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
+		console.log(isOpen)
 
 		const formData = new FormData();
 
@@ -165,10 +168,18 @@ function AddAuctionPage() {
 								}}
 							/>
 
-							<div className="select-date">
-								<DatePicker selected={startDate} onChange={(d: any) => setStartDate(d)} />
-								<DatePicker selected={endDate} onChange={(d: any) => setEndDate(d)} />
-							</div>
+							{!isOpen && (
+								<div className="select-date">
+									<DatePicker
+										selected={startDate}
+										onChange={(d: any) => setStartDate(d)}
+									/>
+									<DatePicker
+										selected={endDate}
+										onChange={(d: any) => setEndDate(d)}
+									/>
+								</div>
+							)}
 
 							<button type="submit">Add new Auction</button>
 						</div>
