@@ -20,6 +20,7 @@ function AuctionPage() {
 	const [openNewBidForm, setOpenNewBidForm] = useState(false);
 	const [addBid, setAddBid] = useState<number>(0);
 	const [bidHigher, setBidhigher] = useState(false);
+	const [bidSuccessFullyAdded, setBidSuccessFullyAdded] = useState(false);
 
 	if (!auction) return <div>No auction found</div>;
 
@@ -60,13 +61,14 @@ function AuctionPage() {
 
 	async function AddBid(e: React.FormEvent) {
 		e.preventDefault();
-		console.log("bid " + addBid);
-		console.log("highestBid " + highestBid?.price);
 
 		if (addBid <= (highestBid?.price ?? 0)) {
 			setBidhigher(!bidHigher)
+			return;
+		}
 
-			// alert("Your bid some must be higher then the highest in order to bid");
+		if (addBid <= (auction?.price ?? 0)) {
+			setBidhigher(!bidHigher)
 			return;
 		}
 
@@ -95,19 +97,40 @@ function AuctionPage() {
 			...prev,
 			bids: [...prev.bids, savedBid],
 		}));
+
+		if (savedBid) {
+			setBidSuccessFullyAdded(!bidSuccessFullyAdded)
+			setTimeout(() => {
+				setOpenNewBidForm(!openNewBidForm)
+				setBidSuccessFullyAdded(false)
+			}, 3000);
+		}
 	}
 
 	return (
 		<div className="selected-auction">
 			<div className="selected-auction-container">
+				<img
+					className="auction-page-img"
+					src={auction.imgUrl ? `${API_BASE}${auction.imgUrl}` : failImg}
+					alt={auction.title}
+				/>
 				<div className="selected-auction-info">
 					<span className="title">{auction.title}</span>
-					<span className="price">Price: {auction.price} €</span>
-					<span className="info">About: {auction.description}</span>
-					<span className="date">Start: {auction.startDate.split("T")[0]}</span>
-					<span className="date">End: {auction.endDate.split("T")[0]}</span>
-					<span className="creator">Created by: {auction.createdBy}</span>
-					<div className="bids">
+					<span className="price"> {auction.price} €</span>
+					<div className="selected-auction-user-info">
+						<span className="info">Info:</span> <span> {auction.description}</span>
+					</div>
+					<div className="selected-auction-user-info">
+						<span className="date">Start: </span> <span> {auction.startDate.split("T")[0]}</span>
+					</div>
+					<div className="selected-auction-user-info">
+						<span className="date">End: </span> <span> {auction.endDate.split("T")[0]}</span>
+					</div>
+					<div className="selected-auction-user-info">
+						<span className="creator">Created by: </span> <span> {auction.createdBy}</span>
+					</div>
+					{/* <div className="bids">
 						<div className="highest-bidder">
 							{highestBid && (
 								<div className="highest-bidder-container">
@@ -116,7 +139,7 @@ function AuctionPage() {
 								</div>
 							)}
 						</div>
-					</div>
+					</div> */}
 					{!userAuction && (
 						<button
 							className="btn-add-bid"
@@ -129,16 +152,11 @@ function AuctionPage() {
 
 				<div className="selected-auction-bidder-info">
 					<div className="bids-list">
-						<img
-							className="auction-page-img"
-							src={auction.imgUrl ? `${API_BASE}${auction.imgUrl}` : failImg}
-							alt={auction.title}
-						/>
-						<span>Bidders:</span>
+						<span> Highest Bidders:</span>
 						{auction.bids?.map((bid: any) => (
 							<div key={bid.id} className="bidders-info">
-								<span>Bidder: {bid.bidder}</span>
-								<span>Price: {bid.price}</span>
+								<span className="bidder">{bid.bidder}</span>
+								<span className="bidder">{bid.price}</span>
 							</div>
 						))}
 					</div>
@@ -147,28 +165,39 @@ function AuctionPage() {
 			</div>
 
 			{openNewBidForm && (
-				<div className="new-bid-form">
-					<form onSubmit={AddBid}>
-						<div className="bid-fields">
-							<label className="bid-label">Bid:</label>
-							<input
-								className="bid-input"
-								type="number"
-								autoComplete="bid"
-								value={addBid}
-								onChange={(e) => setAddBid(Number(e.target.value))}
-								placeholder="100"
-							/>
-							<button className="btn-add-bid" type="submit">
-								Add Bid
-							</button>
-							{bidHigher && (
-								<span className="error-msg">
-									Your bid amount must be higher than the highest bid in order to place a bid.
-								</span>
-							)}
-						</div>
-					</form>
+				<div className="overlay">
+
+					<div className="new-bid-form">
+						<span className="close-modal" onClick={() => setOpenNewBidForm(!openNewBidForm)}>X</span>
+						{bidSuccessFullyAdded ? (
+							<h2>Your bid was successfully added</h2>
+						) : (
+							<form onSubmit={AddBid}>
+								<div className="bid-fields">
+									<label className="bid-label">Bid:</label>
+									<input
+										className="bid-input"
+										type="number"
+										autoComplete="bid"
+										value={addBid}
+										onChange={(e) => setAddBid(Number(e.target.value))}
+										placeholder="100"
+									/>
+									<button className="btn-add-bid" type="submit">
+										Add Bid
+									</button>
+									{bidHigher && (
+										<span className="error-msg">
+											Your bid amount must be higher than the highest bid and higher then the price
+											in order to place a bid.
+										</span>
+									)}
+								</div>
+							</form>
+						)}
+					</div>
+
+
 				</div>
 			)}
 		</div>

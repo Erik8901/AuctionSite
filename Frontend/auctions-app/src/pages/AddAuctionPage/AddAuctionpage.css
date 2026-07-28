@@ -81,6 +81,31 @@
 	gap: 1rem;
 }
 
+select {
+	height: 1rem;
+}
+
+.select-category {
+	cursor: pointer;
+	height: 1.6rem;
+}
+
+.input-image {
+	cursor: pointer;
+}
+
+.submit-new-auction {
+	height: 2rem;
+	cursor: pointer;
+	border-radius: 2px;
+	border: none;
+	font-weight: 600;
+}
+
+.submit-new-auction:hover {
+	color: #006989;
+}
+
 .success-text {
 	color: #006989;
 }

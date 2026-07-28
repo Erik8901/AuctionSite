@@ -127,6 +127,7 @@ function AddAuctionPage() {
 
 							<label>Select a Category:</label>
 							<select
+								className="select-category"
 								value={selectedCategory}
 								onChange={(e) => {
 									setSelectedCategory(e.target.value);
@@ -159,6 +160,7 @@ function AddAuctionPage() {
 
 							<label>Image</label>
 							<input
+								className="input-image"
 								type="file"
 								accept="image/*"
 								onChange={(e) => {
@@ -181,7 +183,7 @@ function AddAuctionPage() {
 								</div>
 							)}
 
-							<button type="submit">Add new Auction</button>
+							<button type="submit" className="submit-new-auction">Add new Auction</button>
 						</div>
 					</form>
 
