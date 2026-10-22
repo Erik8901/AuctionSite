@@ -6,7 +6,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 0px 2rem 0 2rem;
-	border-bottom: 4px solid #006989;
+	border-bottom: 1px solid #006989;
 	align-items: center;
 }
 
@@ -51,7 +51,7 @@
 	display: block;
 	color: #006989;
 	font-weight: 900;
-	font-size: 24px;
+	font-size: 18px;
 }
 
 .hamburger .closeX {

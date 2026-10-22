@@ -18,17 +18,17 @@ function MainMenu() {
         (state: RootState) => state.user.isLoggedIn
     );
 
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         document.body.style.overflow = "hidden";
+    //     } else {
+    //         document.body.style.overflow = "";
+    //     }
 
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isOpen]);
+    //     return () => {
+    //         document.body.style.overflow = "";
+    //     };
+    // }, [isOpen]);
 
 
     function toAddNewAuction() {
