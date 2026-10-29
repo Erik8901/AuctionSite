@@ -8,6 +8,7 @@
 	padding: 0px 2rem 0 2rem;
 	border-bottom: 1px solid #006989;
 	align-items: center;
+	z-index: 999;
 }
 
 .header-left {

@@ -8,6 +8,9 @@ import type { Auction } from "../../types/auction";
 import failImg from "../../assets/No-Image-Placeholder.svg";
 import "./LandingPage.css";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 function LandingPage() {
 	const navigate = useNavigate();
 
@@ -60,13 +63,19 @@ function LandingPage() {
 	return (
 		<>
 			<div className="search-container">
-				<input
-					className="search"
-					type="text"
-					placeholder="Search for an Auction..."
-					value={search}
-					onChange={searchAuctions}
-				/>
+				<div className="search-wrapper">
+					<input
+						className="search"
+						type="text"
+						placeholder="Search for an Auction..."
+						value={search}
+						onChange={searchAuctions}
+					/>
+					<FontAwesomeIcon
+						icon={faMagnifyingGlass}
+						className="search-icon"
+					/>
+				</div>
 			</div>
 
 			<div className="auctions-container">

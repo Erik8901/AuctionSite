@@ -7,7 +7,10 @@ import "./MainMenu.css";
 import { closeMenu } from "../../slices/MainMenuSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGavel } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function MainMenu() {
     const navigate = useNavigate();
@@ -62,11 +65,28 @@ function MainMenu() {
         <>
             <div className={`main-menu ${isOpen ? "open" : ""}`}>
                 <div className="main-menu-links">
-                    <span className="main-menu-link" onClick={toAddNewAuction}>
-                        Create new Auction
-                    </span>
-                    <span className="main-menu-link" onClick={toUserAuctions}>My Auctions</span>
-                    <span className="main-menu-link" onClick={toUserProfile}>My Profile</span>
+                    <div className="link-wrapper">
+                        <FontAwesomeIcon
+                            icon={faGavel}
+                            className="link-icon"
+                        /><span className="main-menu-link" onClick={toUserAuctions}>My Auctions</span>
+                    </div>
+                    <div className="link-wrapper">
+                        <FontAwesomeIcon
+                            icon={faPlusCircle}
+                            className="link-icon"
+                        />
+                        <span className="main-menu-link" onClick={toAddNewAuction}>
+                            Create new Auction
+                        </span>
+                    </div>
+                    <div className="link-wrapper">
+                        <FontAwesomeIcon
+                            icon={faUser}
+                            className="link-icon"
+                        />
+                        <span className="main-menu-link" onClick={toUserProfile}>My Profile</span>
+                    </div>
                 </div>
             </div>
         </>

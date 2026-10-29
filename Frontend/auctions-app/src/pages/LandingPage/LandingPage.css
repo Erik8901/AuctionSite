@@ -75,13 +75,37 @@ h1 {
 	background-position: bottom;
 	margin: 2rem 10rem;
 	padding: 4rem;
+
+}
+
+.search-wrapper {
+	position: relative;
+	width: 50%;
 }
 
 .search {
-	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 12px 40px 12px 14px;
 	border: 2px solid #006989;
-	width: 30%;
+	border-radius: 6px;
+	font-size: 16px;
+	outline: none;
 }
+
+.search:focus {
+	border-color: #0097b2;
+}
+
+.search-icon {
+	position: absolute;
+	right: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #006989;
+	pointer-events: none;
+}
+
 
 .aution-landing-page-info {
 	display: flex;
@@ -103,9 +127,9 @@ h1 {
 
 @media only screen and (max-width: 1500px) {
 
-	.search {
+	/* .search {
 		width: 90%;
-	}
+	} */
 
 	.auctions-list {
 		/* display: flex;

@@ -1,10 +1,8 @@
 .main-menu {
     position: absolute;
     z-index: 9999;
-    /* IMPORTANT */
     background: #fff;
-    /* IMPORTANT so it doesn't look transparent */
-    left: 0px;
+    left: 0;
     top: 102%;
     width: 20%;
     height: 100vh;
@@ -13,7 +11,7 @@
 }
 
 .main-menu.open {
-    z-index: 2000;
+    z-index: 9999;
 }
 
 .main-menu-links {
@@ -27,7 +25,13 @@
     cursor: pointer;
 }
 
-.main-menu-link:hover {
+.link-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.link-wrapper:hover {
     color: #bebebe;
 }
 
