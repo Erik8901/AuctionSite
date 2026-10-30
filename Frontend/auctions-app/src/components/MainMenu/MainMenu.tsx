@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
@@ -16,10 +16,17 @@ function MainMenu() {
     const navigate = useNavigate();
     const isOpen = useAppSelector((state) => state.menu.isOpen);
     const dispatch = useAppDispatch();
-
+    const [filterCategory, setFilterCategory] = useState("");
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.isLoggedIn
     );
+
+    const auctions = useSelector((state: RootState) => state.auctions.items);
+
+    // Unique categories
+    const categories = useMemo(() => {
+        return [...new Set(auctions.map(a => a.category))];
+    }, [auctions]);
 
     // useEffect(() => {
     //     if (isOpen) {
@@ -61,6 +68,13 @@ function MainMenu() {
         console.log("no href")
     }
 
+    function handleCategoryClick(category: string) {
+        // toggle behavior (click same category = reset filter)
+        setFilterCategory(prev =>
+            prev === category ? "" : category
+        );
+    }
+
     return (
         <>
             <div className={`main-menu ${isOpen ? "open" : ""}`}>
@@ -87,6 +101,20 @@ function MainMenu() {
                         />
                         <span className="main-menu-link" onClick={toUserProfile}>My Profile</span>
                     </div>
+                </div>
+                <span className="all-categories">All Categories</span>
+                <div className="categories-container-main-menu">
+                    {/* <span className="categories-title">Categories: </span> */}
+                    {categories.map(category => (
+                        <span
+                            className={`categories ${filterCategory === category ? "active" : ""
+                                }`}
+                            key={category}
+                            onClick={() => handleCategoryClick(category)}
+                        >
+                            {category}
+                        </span>
+                    ))}
                 </div>
             </div>
         </>

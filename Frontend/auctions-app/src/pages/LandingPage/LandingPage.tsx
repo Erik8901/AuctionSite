@@ -55,9 +55,15 @@ function LandingPage() {
 
 	function handleCategoryClick(category: string) {
 		// toggle behavior (click same category = reset filter)
+
+		console.log(category)
 		setFilterCategory(prev =>
 			prev === category ? "" : category
 		);
+	}
+
+	function ResetCategoryClick() {
+		setFilterCategory("");
 	}
 
 	return (
@@ -80,7 +86,12 @@ function LandingPage() {
 
 			<div className="auctions-container">
 				<div className="categories-container">
-					{/* <span className="categories-title">Categories: </span> */}
+					<span
+						className={`categories ${filterCategory === "" ? "active" : ""}`}
+						onClick={ResetCategoryClick}
+					>
+						All Categories
+					</span>
 					{categories.map(category => (
 						<span
 							className={`categories ${filterCategory === category ? "active" : ""
