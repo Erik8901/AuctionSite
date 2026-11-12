@@ -46,6 +46,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddHttpClient<TranslationService>(
+    client =>
+    {
+        client.BaseAddress = new Uri(
+            "https://api-free.deepl.com/"
+        );
+    }
+);
+
+
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -62,6 +73,8 @@ using (var scope = app.Services.CreateScope())
 
 
 }
+
+
 
 app.UseCors("frontend");
 

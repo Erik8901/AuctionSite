@@ -1,5 +1,7 @@
 using Auctions.Api.Dtos;
 using Auctions.Api.Models;
+using Auctions.Api.Services;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +10,17 @@ using Microsoft.EntityFrameworkCore;
 public class AuctionController : ControllerBase
 {
     private readonly AppDbContext _db;
+    private readonly TranslationService _translationService;
+    private readonly ILogger<AuctionController> _logger;
 
-    public AuctionController(AppDbContext db)
+    public AuctionController(
+    AppDbContext db,
+    TranslationService translationService,
+    ILogger<AuctionController> logger)
     {
         _db = db;
+        _translationService = translationService;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -45,13 +54,17 @@ public class AuctionController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAuction([FromForm] CreateAuctionDto dto)
+    public async Task<IActionResult> CreateAuction(
+    [FromForm] CreateAuctionDto dto)
     {
         string imgUrl = "";
 
+        // Upload image
         if (dto.Image != null)
         {
-            var fileName = Guid.NewGuid() + Path.GetExtension(dto.Image.FileName);
+            var fileName = Guid.NewGuid() +
+                Path.GetExtension(dto.Image.FileName);
+
             var path = Path.Combine("wwwroot/images", fileName);
 
             using (var stream = new FileStream(path, FileMode.Create))
@@ -62,6 +75,7 @@ public class AuctionController : ControllerBase
             imgUrl = "/images/" + fileName;
         }
 
+        // Create auction with original content
         var auction = new Auction
         {
             Title = dto.Title,
@@ -72,11 +86,51 @@ public class AuctionController : ControllerBase
             ImgUrl = imgUrl,
             IsDone = false,
             Category = dto.Category
-
         };
 
+        // Save original auction first
         _db.Auctions.Add(auction);
         await _db.SaveChangesAsync();
+
+        // Automatically translate auction
+        try
+        {
+            // Translate to English
+            var english = await _translationService.TranslateAsync(
+                auction.Title,
+                auction.Description,
+                "EN"
+            );
+
+            // Translate to Swedish
+            var swedish = await _translationService.TranslateAsync(
+                auction.Title,
+                auction.Description,
+                "SV"
+            );
+
+            // Save detected original language
+            auction.OriginalLanguage =
+                english.OriginalLanguage.ToLowerInvariant();
+
+            // Save English translations
+            auction.TitleEn = english.Title;
+            auction.DescriptionEn = english.Description;
+
+            // Save Swedish translations
+            auction.TitleSv = swedish.Title;
+            auction.DescriptionSv = swedish.Description;
+
+            await _db.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(
+                ex,
+                "Translation failed for auction {AuctionId}",
+                auction.Id
+            );
+        }
 
         return Ok(auction);
     }
@@ -97,4 +151,18 @@ public class AuctionController : ControllerBase
 
         return Ok(bid);
     }
+
+    [HttpGet("test-translation")]
+    public async Task<IActionResult> TestTranslation()
+    {
+        var result = await _translationService.TranslateAsync(
+            "Fin cykel till salu",
+            "En begagnad cykel i bra skick.",
+            "EN"
+        );
+
+        return Ok(result);
+    }
+
+
 }

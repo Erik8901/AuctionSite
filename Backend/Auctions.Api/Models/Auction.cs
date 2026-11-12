@@ -18,4 +18,15 @@ public class Auction
     public string? Category { get; set; } = "";
 
     public List<Bid> Bids { get; set; } = new();
+
+    // Original language detected by DeepL
+    public string? OriginalLanguage { get; set; }
+
+    // English translations
+    public string? TitleEn { get; set; }
+    public string? DescriptionEn { get; set; }
+
+    // Swedish translations
+    public string? TitleSv { get; set; }
+    public string? DescriptionSv { get; set; }
 }

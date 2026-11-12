@@ -10,30 +10,13 @@ namespace Auctions.Api.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "imgUrl",
-                table: "Auctions",
-                newName: "ImgUrl");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Category",
-                table: "Auctions",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+            // ImgUrl and Category already exist in the database.
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Category",
-                table: "Auctions");
-
-            migrationBuilder.RenameColumn(
-                name: "ImgUrl",
-                table: "Auctions",
-                newName: "imgUrl");
+            // Do not remove or rename existing database columns
         }
     }
 }

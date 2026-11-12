@@ -77,6 +77,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuctionController",
+    "Method": "TestTranslation",
+    "RelativePath": "api/Auction/test-translation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthApi.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/auth/login",

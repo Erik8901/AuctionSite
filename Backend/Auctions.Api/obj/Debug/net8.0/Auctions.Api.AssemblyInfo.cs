@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("0f7c0ce1-ec3a-443e-a210-7340d7d49e27")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auctions.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c01c1a635a985913389aa2e86365a7d76c766176")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8c5c1bf037b2d82d44406b9544dd0a106abfa0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auctions.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auctions.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

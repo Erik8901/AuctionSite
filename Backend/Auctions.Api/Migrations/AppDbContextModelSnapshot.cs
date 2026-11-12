@@ -30,7 +30,6 @@ namespace Auctions.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -39,6 +38,12 @@ namespace Auctions.Api.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionSv")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
@@ -51,6 +56,9 @@ namespace Auctions.Api.Migrations
                     b.Property<bool>("IsDone")
                         .HasColumnType("bit");
 
+                    b.Property<string>("OriginalLanguage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -60,6 +68,12 @@ namespace Auctions.Api.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleSv")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
