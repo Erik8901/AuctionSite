@@ -7,11 +7,19 @@ import MainMenu from "../MainMenu/MainMenu";
 import { toggleMenu } from "../../slices/MainMenuSlice";
 import { userStatus } from "../../slices/UserLoggedSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import ReactCountryFlag from "react-country-flag";
 
 import "./Header.css";
 
+const languages = [
+	{ code: "sv", country: "SE", name: "Svenska" },
+	{ code: "en", country: "GB", name: "English" },
+];
+
 function Header() {
 	const [isMainMenuOpen, setIsMainMenuOpen] = useState(false);
+	const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
 	const navigate = useNavigate();
 	const location = useLocation();
 	const dispatch = useAppDispatch();
@@ -23,8 +31,13 @@ function Header() {
 
 	const currentLanguage = i18n.resolvedLanguage || "en";
 
+	const current = languages.find((lang) =>
+		currentLanguage.startsWith(lang.code)
+	) || languages[1];
+
 	function changeLanguage(language: string) {
 		i18n.changeLanguage(language);
+		setIsLanguageMenuOpen(false);
 	}
 
 	useEffect(() => {
@@ -100,21 +113,59 @@ function Header() {
 
 			<div className="header-right">
 
-				{/* Language switcher */}
-				<div className="language-switcher">
+				{/* Language dropdown */}
+				<div className="language-dropdown">
+
+					{/* Currently selected flag */}
 					<button
-						className={`language-btn ${currentLanguage.startsWith("en") ? "active" : ""}`}
-						onClick={() => changeLanguage("en")}
+						type="button"
+						className="language-btn"
+						onClick={() =>
+							setIsLanguageMenuOpen(!isLanguageMenuOpen)
+						}
+						aria-label="Select language"
+						aria-expanded={isLanguageMenuOpen}
 					>
-						EN
+						<ReactCountryFlag
+							countryCode={current.country}
+							svg
+							style={{
+								width: "2rem",
+								height: "2rem",
+							}}
+							title={current.name}
+						/>
 					</button>
 
-					<button
-						className={`language-btn ${currentLanguage.startsWith("sv") ? "active" : ""}`}
-						onClick={() => changeLanguage("sv")}
-					>
-						SV
-					</button>
+					{/* Available languages */}
+					{isLanguageMenuOpen && (
+						<div className="language-picker-menu">
+							{languages.map((lang) => (
+								<button
+									key={lang.code}
+									type="button"
+									className={`language-option ${currentLanguage.startsWith(lang.code)
+										? "active"
+										: ""
+										}`}
+									onClick={() =>
+										changeLanguage(lang.code)
+									}
+									title={lang.name}
+								>
+									<ReactCountryFlag
+										countryCode={lang.country}
+										svg
+										style={{
+											width: "2em",
+											height: "2em",
+										}}
+									/>
+									<span>{lang.name}</span>
+								</button>
+							))}
+						</div>
+					)}
 				</div>
 
 				{/* Login / Logout */}
