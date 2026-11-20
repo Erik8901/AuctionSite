@@ -171,9 +171,9 @@ function LandingPage() {
 										{translatedTitle}
 									</span>
 
-									<span className="auction-info">
+									{/* <span className="auction-info">
 										{translatedDescription}
-									</span>
+									</span> */}
 
 									<span className="auction-price">
 										{auction.price} €

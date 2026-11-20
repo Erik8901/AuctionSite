@@ -72,6 +72,27 @@ h2 {
 	cursor: pointer;
 }
 
+.header-title:hover {
+	color: #bebebe;
+}
+
+.user-info-logout-container {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	white-space: nowrap;
+}
+
+.user-logins {
+	color: #006989;
+	white-space: nowrap;
+}
+
+.user-logins:hover {
+	color: #bebebe;
+	cursor: pointer;
+}
+
 .btn-logout {
 	background: none;
 	border: none;
@@ -79,21 +100,15 @@ h2 {
 	font-size: 1rem;
 	cursor: pointer;
 	font-weight: 700;
+	flex-shrink: 0;
+	min-width: 100px;
+	white-space: nowrap;
 }
 
 .btn-logout:hover {
 	color: #bebebe;
 }
 
-.user-logins {
-	color: #006989;
-}
-
-.user-info-logout-container {
-	display: flex;
-	align-items: center;
-	gap: 2rem;
-}
 
 .language-dropdown {
 	padding-right: 1rem;
@@ -115,8 +130,8 @@ h2 {
 }
 
 .language-option.active {
-	background: #006989;
-	color: #fff;
+
+	color: #006989;
 	font-weight: bold;
 }
 
